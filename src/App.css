@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+* {
+  font-family: 'Poppins','Noto Sans lao','Phetsarath OT', sans-serif;
+}
+
+#fontName {
+  font-family: 'Righteous', cursive;
+  /* color:#f7f7f7; */
+}
+select::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  height:0;
+}
+table::-webkit-scrollbar {
+  width: 8px;
+  height:0;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  /* width: 8px;
+  height:0; */
+}
+select::-webkit-scrollbar-thumb {
+  background: #18aaff;
+}
+select::-webkit-scrollbar-track {
+  background: #f7f7f7;
+}
+
+/* @media (max-width: 945px ) {
+  .hiddenMedias {
+    display: none;
+  }
+  .blockMedias {
+    display: block;
+  }
+} */
+
+
