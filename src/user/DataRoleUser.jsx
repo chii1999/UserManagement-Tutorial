@@ -6,7 +6,7 @@ import TableBody from "@mui/material/TableBody"
 import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import { Box } from "@mui/system"
-import AutoStoriesIcon from '@mui/icons-material/AutoStories'
+import AutoStoriesIcon from "@mui/icons-material/AutoStories"
 
 function DataRoleUser() {
   const [search, setSearch] = useState("")
@@ -15,7 +15,9 @@ function DataRoleUser() {
 
   const getProfile = async () => {
     try {
-      const response = await axios.get("http://192.168.0.12:8000/apiroles/select/perm")
+      const response = await axios.get(
+        "http://192.168.0.12:8000/apiroles/select/perm"
+      )
       setRoledata(response.data)
       setNonedata(true)
     } catch (error) {
@@ -27,7 +29,7 @@ function DataRoleUser() {
     getProfile()
   }, [])
 
-let number=1;
+  let number = 1
 
   const classThead =
     "text-white p-2 font-medium text-md border border-slate-200 text-center"
@@ -39,18 +41,18 @@ let number=1;
       animate={{ x: 0 }}
       initial={{ x: -100 }}
       className=" lg:mt-0 md:mt-20 mt-20 md:h-screen h-auto">
-        <span className="font-medium text-gray-500">
-          ບົດບາດ ແລະ ສິດທີ ຂອງພະນັກງານແຕ່ລະຄົນ
-        </span>
-        <div className="w-full flex flex-col justify-center items-start p-2 -mb-12 text-sm   font-medium text-sky-500 gap-2">
-          <span>ໝາຍເລກ 1 ແມ່ນໝາຍຄວາມວ່າ ສາມາດເຮັດໃນສິ່ງນັ້ນໄດ້</span>
-          <span>ໝາຍເລກ 0 ແມ່ນໝາຍຄວາມວ່າ ບໍ່ມີສິດເຄື່ອນໄຫວໃນສິ່ງນັ້ນ</span>
-        </div>
+      <span className="font-medium text-gray-500">
+        ບົດບາດ ແລະ ສິດທີ ຂອງພະນັກງານແຕ່ລະຄົນ
+      </span>
+      {/* <div className="w-full flex flex-col justify-center items-start p-2 -mb-12 text-sm   font-medium text-sky-500 gap-2">
+        <span>ໝາຍເລກ 1 ແມ່ນໝາຍຄວາມວ່າ ສາມາດເຮັດໃນສິ່ງນັ້ນໄດ້</span>
+        <span>ໝາຍເລກ 0 ແມ່ນໝາຍຄວາມວ່າ ບໍ່ມີສິດເຄື່ອນໄຫວໃນສິ່ງນັ້ນ</span>
+      </div> */}
       {/* <RoleAll /> */}
       <Box className="flex justify-end items-end mb-2">
         <input
           value={search}
-        onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder="ຊອກຫາ......"
           className="border outline-none font-medium text-sky-500 py-2 px-6 rounded-md md:w-52 w-32"
@@ -67,10 +69,10 @@ let number=1;
                 ລຳດັບ
               </th>
               <th rowSpan="3" className={classThead}>
-                user ID
+                ID ບັນຊີ
               </th>
               <th rowSpan="3" className={classThead}>
-                ຊື່ນຳໃຊ້
+                ຊື່ບັນຊີ
               </th>
               <th rowSpan="3" className={classThead}>
                 ອີເມວທີ່ຢູ່
@@ -100,7 +102,8 @@ let number=1;
             </tr>
           </TableHead>
           <TableBody>
-            {roledata.filter(
+            {roledata
+              .filter(
                 (users) =>
                   users.UserName.toLowerCase().includes(search) ||
                   users.Email.toLowerCase().includes(search)
@@ -109,10 +112,27 @@ let number=1;
                 return (
                   <tr key={index}>
                     <td className={classTbody}> {number++} </td>
-                    <td className="text-green-500 py-3 px-2 font-normal border border-slate-200 text-sm text-center"> {getData.randId} </td>
+                    <td className="text-green-500 py-3 px-2 font-normal border border-slate-200 text-sm text-center">
+                      {" "}
+                      {getData.randId}{" "}
+                    </td>
                     <td className={classTbody}> {getData.UserName} </td>
                     <td className={classTbody}> {getData.Email} </td>
-                    <td className={classTbody}> {getData.RoleName} </td>
+                    <td className={classTbody}>
+                      {getData.RoleName === "admin" ? (
+                        <span className="py-1 px-4 rounded-sm bg-red-400 text-white">
+                          ຜູ້ບໍລິຫານ
+                        </span>
+                      ) : getData.RoleName === "manager" ? ( 
+                        <span className="py-1 px-4 rounded-sm bg-sky-400 text-white">
+                          ຜູ້ຈັດການ
+                        </span>
+                       ) : (
+                        <span className="py-1 px-4 rounded-sm bg-green-300">
+                          ຜູ້ນຳໃຊ້
+                        </span>
+                      )}
+                    </td>
                     <td className={classTbody}> {getData.PermCreate} </td>
                     <td className={classTbody}> {getData.PermRead} </td>
                     <td className={classTbody}> {getData.PermUpdate} </td>
@@ -121,14 +141,15 @@ let number=1;
                 )
               })}
           </TableBody>
-          
         </Table>
         {!nonedata && (
-              <div className="w-full h-auto py-6 flex flex-col gap-2 justify-center drop-shadow-md items-center text-red-400 text-xl font-medium">
-                <AutoStoriesIcon sx={{ fontSize: 100 }} />
-                <span className="text-lg font-medium text-sky-500">ບໍ່ມີຂໍ້ມູນແລ້ວ!</span>
-              </div>
-            )}
+          <div className="w-full h-auto py-6 flex flex-col gap-2 justify-center drop-shadow-md items-center text-red-400 text-xl font-medium">
+            <AutoStoriesIcon sx={{ fontSize: 100 }} />
+            <span className="text-lg font-medium text-sky-500">
+              ບໍ່ມີຂໍ້ມູນແລ້ວ!
+            </span>
+          </div>
+        )}
       </TableContainer>
     </motion.div>
   )

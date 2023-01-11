@@ -41,7 +41,57 @@ function DatatableProfile() {
       })
       .catch((error) => console.log("error", error))
   }, [user])
-  // action table profile
+  
+
+  //   action button
+  const clickUpdate = (ProfileId) => {
+    navigate(`/updateprofile/${ProfileId}`)
+  }
+
+  const deleteProfile = (ProfileId) => {
+    swal({
+      title: "ທ່ານໝັ່ນໃຈແລ້ວບໍ?",
+      text: "ລາຍຊື່ໂປຣໄຟຣນີ້ຈະຖຶກລຶບອອກຈາກລະບົບ ພ້ອມກັບຂໍ້ມູນບັນຊີ!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        var myHeaders = new Headers()
+        myHeaders.append("Content-Type", "application/json")
+
+        var raw = JSON.stringify({
+          ProfileId: ProfileId,
+        })
+
+        var requestOptions = {
+          method: "DELETE",
+          headers: myHeaders,
+          body: raw,
+          redirect: "follow",
+        }
+
+        fetch("http://192.168.0.12:8000/apiprofile/delete/" + ProfileId, requestOptions)
+          .then((response) => response.json())
+          .then((result) => {
+            if (result.status === "ok") {
+              swal({
+                title: "ສຳເລັດແລ້ວ",
+                text: "ຟິວນີ້ໄດ້ຖຶກລົບອອກໄປແລ້ວ!",
+                icon: "success",
+                button: false,
+              })
+              getProfile()
+            }
+          })
+          .catch((error) => console.log("error", error))
+      }
+    })
+  }
+
+  useEffect(() => {
+    getProfile()
+  }, [])
 
   const getProfile = async () => {
     try {
@@ -53,14 +103,8 @@ function DatatableProfile() {
     }
   }
 
-  // {
-  //   name: "avatar",
-  //   selector: (row) => <span> <img src={`/apiprofile/${row.Img}`} alt="pic" className="w-16 h-16 shadow-md rounded-full object-cover" /> </span>,
-  //   sortable: true,
-  // },
-
+// map data to table
   let number = 1
-
   const columns = [
     {
       name: "ລຳດັບ",
@@ -78,7 +122,7 @@ function DatatableProfile() {
         </span>
       ),
       sortable: true,
-    },
+    }, 
     {
       name: "ຊື່",
       selector: (row) => row.FirstName,
@@ -138,9 +182,6 @@ function DatatableProfile() {
     },
   ]
 
-  useEffect(() => {
-    getProfile()
-  }, [])
 
   useEffect(() => {
     const result = profiledata.filter((Profile) => {
@@ -158,48 +199,7 @@ function DatatableProfile() {
 
     setFilterprofile(result)
   }, [search])
-
-  //   action button
-  const clickUpdate = (ProfileId) => {
-    navigate(`/updateprofile/${ProfileId}`)
-  }
-
-  const deleteProfile = (ProfileId) => {
-    swal({
-      title: "ທ່ານແນ່ໃຈແລ້ວບໍ່?",
-      text: "ລາຍຊື່ໂປຣໄຟຣນີ້ຈະຖຶກລຶບອອກຈາກລະບົບ!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        var myHeaders = new Headers()
-        myHeaders.append("Content-Type", "application/json")
-
-        var raw = JSON.stringify({
-          ProfileId: ProfileId,
-        })
-
-        var requestOptions = {
-          method: "DELETE",
-          headers: myHeaders,
-          body: raw,
-          redirect: "follow",
-        }
-
-        fetch("http://192.168.43.173:8000/apiprofile/delete/" + ProfileId, requestOptions)
-          .then((response) => response.json())
-          .then((result) => {
-            if (result.status === "ok") {
-              swal("ລົບຂໍ້ມູນສຳເລັດ")
-              getProfile()
-            }
-          })
-          .catch((error) => console.log("error", error))
-      }
-    })
-  }
-
+  
   return (
     <div>
       <div className="py-4 flex justify-between items-center">

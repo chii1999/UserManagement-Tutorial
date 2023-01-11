@@ -85,68 +85,124 @@ export default function AddProfile() {
   const addUserData = async (e) => {
     e.preventDefault()
     if (!UserName) {
-      swal("ກະລຸນາປ້ອນຊື່ຜູ້ນຳໃຊ້!", {
-        buttons: "ຂ້ອຍເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາປ້ອນຊື່ຜູ້ນຳໃຊ້!",
+        textColr: "#ff0000",
+        icon: "info",
+        button: false,
       })
     } else if (!UserName.match(regexUsername)) {
-      swal("ຊື່ຕ້ອງມີ ຕົວໃຫຍ່, ຕົວໜ້ອຍ ແລະ ຢ່າງນ້ອຍ 3 - 16 ຕົວອັກສອນ", {
-        buttons: "ຂ້ອຍເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ຊື່ຕ້ອງມີ ຕົວໃຫຍ່, ຕົວໜ້ອຍ ແລະ ຢ່າງນ້ອຍ 3 - 16 ຕົວອັກສອນ!",
+        icon: "info",
+        button: false,
       })
     } else if (!Email) {
-      swal("ກະລຸນາປ້ອນອີເມວ!", {
-        buttons: "ຂ້ອຍເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາປ້ອນອີເມວທີຢູ່ຂອງທ່ານ!",
+        icon: "info",
+        button: false,
       })
     } else if (!Mobile) {
-      swal("ກະລຸນາປ້ອນເບີໂທລະສັບ!", {
-        buttons: "ຂ້ອຍເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາປ້ອນເບີໂທລະສັບ!",
+        icon: "info",
+        button: false,
       })
     } else if (!Mobile.match(regexMobile)) {
-      swal("ເບີໂທລະສັບຕ້ອງແມ່ນ 020 ຫ້າມຍະຫວ່າງ ແລະ ບໍ່ເກີນ 8 ຫລັກ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
-        position: "start",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ເບີໂທລະສັບຕ້ອງແມ່ນ 020 ຫ້າມຍະຫວ່າງ ແລະ ບໍ່ເກີນ 8 ຫລັກ!",
+        icon: "info",
+        button: false,
       })
-      return false
     } else if (!Password) {
-      swal("ກະລຸນາປ້ອນລະຫັດ!", {
-        buttons: "ຂ້ອຍເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາປ້ອນລະຫັດຜ່ານ!",
+        icon: "info",
+        button: false,
       })
     } else if (!Password.match(regexPass)) {
-      swal("ລະຫັດຜ່ານຢ່າງໜ້ອຍ 6 ຫຼັກຂື້ນໄປ", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ລະຫັດຜ່ານຢ່າງໜ້ອຍ 6 ຫຼັກຂື້ນໄປ!",
+        icon: "info",
+        button: false,
       })
     } else if (!cPassword) {
-      swal("ຢືນຢັນລະຫັດຜ່ານໃຫ້ຄືກັນ!", {
-        buttons: "ຂ້ອຍເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາຢືນຢັນລະຫັດຜ່ານພ້ອມ!",
+        icon: "info",
+        button: false,
       })
     } else if (Password !== cPassword) {
-      swal("ຢືນຢັນລະຫັດຜ່ານບໍ່ຕົງກັນ!", {})
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ຢືນຢັນລະຫັດຜ່ານບໍ່ຕົງກັນ!",
+        icon: "info",
+        button: false,
+      })
     } else if (!FirstName) {
-      swal("ກະລຸນາປ້ອນຊື່ໂປຣໄຟຣ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາປ້ອນຊື່ໂປຣໄຟຣ!",
+        icon: "info",
+        button: false,
       })
     } else if (!LastName) {
-      swal("ກະລຸນາປ້ອນນາມສະກຸນ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາປ້ອນນາມສະກຸນ!",
+        icon: "info",
+        button: false,
       })
     } else if (!Gender) {
-      swal("ກະລຸນາເລືອກເພດ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາເລືອກເພດ!",
+        icon: "info",
+        button: false,
       })
     } else if (!Dob) {
-      swal("ກະລຸນາປ້ອນວັນທີ,ເດືອນ,ປີ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາ ເລືອກ ຫຼື ປ້ອນ ວັນເດືອນປີເກີດ!",
+        icon: "info",
+        button: false,
       })
     } else if (!ProvinceId) {
-      swal("ເຈົ້າເປັນຄົນແຂວງໃດ ໃຫ້ເລືອກແຂວງນັ້ນ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາ ເລືອກແຂວງທີຕົນສັງກັດຢູ່!",
+        icon: "info",
+        button: false,
       })
     } else if (!DistrictId) {
-      swal("ເລືອກເມືອງປະຈຸບັນ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາເລືອກເມືອງພ້ອມ!",
+        icon: "info",
+        button: false,
       })
     } else if (!VillageName) {
-      swal("ປ້ອນຊື່ບ້ານຂອງທ່ານ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ຢ່າລືມປ້ອນຊື່ບ້ານພ້ອມ!",
+        icon: "info",
+        button: false,
+      })
+    } else if (!image) {
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ເລືອກຮູບໂປຣໄຟຣຂອງທ່ານກ່ອນ!",
+        icon: "info",
+        button: false,
       })
     } else {
       var formData = new FormData()
@@ -199,11 +255,11 @@ export default function AddProfile() {
   }
 
   return (
-    <div className="">
-      <div className="rounded-md p-1 bg-white mt-6">
+    <div className="w-full">
+      <div className="rounded-md bg-white mt-6">
         <form onSubmit={addUserData} className="flex flex-col gap-4 pt-6">
           <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4 ">
-            <div className="my-2 mx-6 items-center">
+            <div className="my-2 mx-2 items-center">
               <span className="font-medium text-gray-500 -mb-2">
                 ຊື່ຜູ້ນຳໃຊ້:
               </span>
@@ -220,7 +276,7 @@ export default function AddProfile() {
                 />
               </label>
             </div>
-            <div className="my-2 mx-6 items-center">
+            <div className="my-2 mx-2 items-center">
               <span className="font-medium text-gray-500 -mb-2">
                 ອີເມວທີ່ຢູ່:
               </span>
@@ -238,7 +294,7 @@ export default function AddProfile() {
               </label>
             </div>
           </div>
-          <div className="my-1 mx-6">
+          <div className="my-1 mx-2">
             <span className="font-medium text-gray-500 -mb-2">
               ເບີໂທຕິດຕໍ່:
             </span>
@@ -255,7 +311,7 @@ export default function AddProfile() {
               />
             </label>
           </div>
-          <div className="my-1 mx-6">
+          <div className="my-1 mx-2">
             <span className="font-medium text-gray-500 -mb-2">ລະຫັດຜ່ານ:</span>
             <label className="relative block">
               <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -270,7 +326,7 @@ export default function AddProfile() {
               />
             </label>
           </div>
-          <div className="my-1 mx-6 mb-8">
+          <div className="my-1 mx-2 mb-8">
             <span className="font-medium text-gray-500 -mb-2">
               ຢືນຢັນລະຫັດຜ່ານ:
             </span>
@@ -290,7 +346,7 @@ export default function AddProfile() {
           <h1 className="mx-2 mt-6 px-2 py-2 border-l-2 border-l-sky-500 bg-sky-200 font-medium text-gray-500">
             ຟິວດ້ານລຸ່ມນີ້ແມ່ນຂໍ້ມູນໂປຣໄຟຣຂອງ user
           </h1>
-          <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-2 px-6">
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-2 px-2">
             <div className="w-full h-auto my-2">
               <span className="font-medium text-gray-500 -mb-2">
                 ຊື່ພະນັກງານ:
@@ -480,7 +536,7 @@ export default function AddProfile() {
               type="submit"
               className="active:scale-90 w-full">
               <AddIcon />
-              <span>ສ້າງບັນຊີ</span>
+              <span>ລົງທະບຽນບັນຊີ</span>
             </Button>
           </div>
         </form>

@@ -14,7 +14,7 @@ import DescriptionIcon from "@mui/icons-material/Description"
 import MmsIcon from "@mui/icons-material/Mms"
 import swal from "sweetalert"
 import AddModeratorIcon from "@mui/icons-material/AddModerator"
-
+import { motion } from "framer-motion"
 
 export default function AccountMenu() {
   const navigate = useNavigate()
@@ -30,13 +30,13 @@ export default function AccountMenu() {
 
   const handleLogout = () => {
     swal({
-      title: "ທ່ານແນ່ໃຈບໍ?",
-      text: "ບັນຊີນີ້ຈະຖຶກອອກຈາກໂປຣແກຣມທັນທີ",
+      title: "ທ່ານໝັ້ນໃຈແລ້ວບໍ?",
+      text: "ບັນຊີນີ້ຈະຖຶກອອກຈາກລະບົບ ຫາກຕ້ອງການເຂົ້າໃໝ່ ຕ້ອງລ໋ອກອິນເຂົ້າອິກຄັັ້ງ",
       icon: "warning",
       buttons: {
-        cancel: "ບໍ່ຕ້ອງການອອກ",
+        cancel: "ຍັງບໍ່ອອກ",
         catch: {
-          text: "OK",
+          text: "ອອກທັນທີ",
           value: "catch",
         },
       },
@@ -44,18 +44,28 @@ export default function AccountMenu() {
     }).then((willDelete) => {
       if (willDelete) {
         localStorage.removeItem("Token")
-        navigate("/login")
         swal("ບັນຊີຖຶກອອກຈາກລະບົບແລ້ວ ກະລຸນາລ໋ອກອິນເຂົ້າໃໝ່ເທົ່ານັ້ນ", {
           icon: "success",
           buttons: false,
         })
+        navigate("/login")
       } else {
         navigate("/manager")
       }
     })
   }
+
   const goManager = () => {
     navigate("/BannerProfile")
+  }
+  const registeruser = () => {
+    navigate("/registeruser")
+  }
+  const historyhome = () => {
+    navigate("/historyhome")
+  }
+  const rolename = () => {
+    navigate("/rolename")
   }
 
   // Seculity token
@@ -86,6 +96,9 @@ export default function AccountMenu() {
       .catch((error) => console.log("error", error))
   }, [user])
 
+  const animateForm = { opacity: 0, y: -40 }
+  const animateTo = { opacity: 1, y: 0 }
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -97,7 +110,9 @@ export default function AccountMenu() {
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}>
-              <Avatar src={`http://192.168.0.12:8000/apilogin/${user.Img}`} sx={{ bgcolor: "#3f51b5" }}></Avatar>
+            <Avatar
+              src={`http://192.168.0.12:8000/apilogin/${user.Img}`}
+              sx={{ bgcolor: "#3f51b5" }}></Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -131,84 +146,99 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
         <div className="w-[15rem]">
           <MenuItem onClick={goManager} className="flex gap-4 cursor-default">
-            <Avatar src={`http://192.168.0.12:8000/apilogin/${user.Img}`} alt={user.UserName} sx={{ width: 53, height: 53 }} />
-            {/* <div className="w-12 h-12 rounded-full bg-slate-600"></div> */}
+            <Avatar
+              src={`http://192.168.0.12:8000/apilogin/${user.Img}`}
+              alt={user.UserName}
+              sx={{ width: 53, height: 53 }}
+            />
             <span className="uppercase font-medium text-gray-600">
               {user.UserName}
             </span>
           </MenuItem>
-          {/* <Box className="flex justify-start items-center gap-2 px-2 pr-8">
-          <img src="#" alt="U" className="w-10 h-10 rounded-full bg-slate-500" />
-          <span className="uppercase font-medium text-sky-400">
-              {user.UserName}
-            </span>
-        </Box> */}
           <Divider />
-          {!admin && (
-            <MenuItem>
-              <NavLink
-                to="/registeruser"
-                className="flex justify-center items-center">
-                <ListItemIcon>
-                  <PersonAddAlt1Icon
-                    fontSize="small"
-                    className="text-sky-400"
-                  />
-                </ListItemIcon>
-                <span className="font-medium text-gray-500">ສະໝັກບັນຊີໃໝ່</span>
-              </NavLink>
-            </MenuItem>
-          )}
-          {!manager && (
-            <MenuItem>
-              <NavLink
-                to="/registeruser"
-                className="flex justify-center items-center">
-                <ListItemIcon>
-                  <PersonAddAlt1Icon
-                    fontSize="small"
-                    className="text-sky-400"
-                  />
-                </ListItemIcon>
-                <span className="font-medium text-gray-500">ສະໝັກບັນຊີໃໝ່</span>
-              </NavLink>
-            </MenuItem>
-          )}
           <MenuItem>
-            <NavLink
-              to="/bannerProfile"
+            <motion.NavLink
+              initial={animateForm}
+              animate={animateTo}
+              transition={{ delay: 0.2 }}
+              onClick={goManager}
               className="flex justify-center items-center">
               <ListItemIcon>
                 <MmsIcon fontSize="small" className="text-sky-400" />
               </ListItemIcon>
               <span className="font-medium text-gray-500">ໂປຣໄຟຣຂອງຂ້ອຍ</span>
-            </NavLink>
+            </motion.NavLink>
           </MenuItem>
+          {!admin && (
+            <MenuItem>
+              <motion.NavLink
+                initial={animateForm}
+                animate={animateTo}
+                transition={{ delay: 0.05 }}
+                onClick={registeruser}
+                className="flex justify-center items-center">
+                <ListItemIcon>
+                  <PersonAddAlt1Icon
+                    fontSize="small"
+                    className="text-sky-400"
+                  />
+                </ListItemIcon>
+                <span className="font-medium text-gray-500">ສະໝັກບັນຊີໃໝ່</span>
+              </motion.NavLink>
+            </MenuItem>
+          )}
+          {!manager && (
+            <MenuItem>
+              <motion.NavLink
+                initial={animateForm}
+                animate={animateTo}
+                transition={{ delay: 0.1 }}
+                onClick={registeruser}
+                className="flex justify-center items-center">
+                <ListItemIcon>
+                  <PersonAddAlt1Icon
+                    fontSize="small"
+                    className="text-sky-400"
+                  />
+                </ListItemIcon>
+                <span className="font-medium text-gray-500">ສະໝັກບັນຊີໃໝ່</span>
+              </motion.NavLink>
+            </MenuItem>
+          )}
           <MenuItem>
-            <NavLink
-              to="/historyhome"
+            <motion.NavLink
+              initial={animateForm}
+              animate={animateTo}
+              transition={{ delay: 0.3 }}
+              onClick={historyhome}
               className="flex justify-center items-center">
               <ListItemIcon>
                 <DescriptionIcon fontSize="small" className="text-sky-400" />
               </ListItemIcon>
               <span className="font-medium text-gray-500">ການເຄື່ອນໄຫວ</span>
-            </NavLink>
+            </motion.NavLink>
           </MenuItem>
           {!admin && (
             <MenuItem>
-              <NavLink
-                to="/rolename"
+              <motion.NavLink
+                initial={animateForm}
+                animate={animateTo}
+                transition={{ delay: 0.4 }}
+                onClick={rolename}
                 className="flex justify-center items-center">
                 <ListItemIcon>
                   <AddModeratorIcon fontSize="small" className="text-sky-400" />
                 </ListItemIcon>
                 <span className="font-medium text-gray-500">ຂໍ້ມູນບົດບາດ</span>
-              </NavLink>
+              </motion.NavLink>
             </MenuItem>
           )}
           <MenuItem>
             <button onClick={handleLogout}>
-              <NavLink
+              <motion.NavLink
+                initial={animateForm}
+                animate={animateTo}
+                transition={{ delay: 0.5 }}
                 to="../signin"
                 className="flex justify-cneter items-center">
                 <ListItemIcon>
@@ -218,7 +248,7 @@ export default function AccountMenu() {
                   />
                 </ListItemIcon>
                 <span className="font-medium text-gray-500">ອອກຈາກລະບົບ</span>
-              </NavLink>
+              </motion.NavLink>
             </button>
           </MenuItem>
         </div>

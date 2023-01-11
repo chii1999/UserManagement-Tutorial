@@ -4,16 +4,17 @@ import Box from "@mui/material/Box"
 import TabContext from "@mui/lab/TabContext"
 import TabPanel from "@mui/lab/TabPanel"
 import Divider from "@mui/material/Divider"
-import TextField from "@mui/material/TextField"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import Checkbox from "@mui/material/Checkbox"
 import FormGroup from "@mui/material/FormGroup"
-import Button from "@mui/material/Button"
-import { useParams, useNavigate } from "react-router-dom"
+import AccountCircleIcon from "@mui/icons-material/AccountCircle"
+import EmailIcon from "@mui/icons-material/Email"
 import RestartAltIcon from "@mui/icons-material/RestartAlt"
 import DoneAllIcon from "@mui/icons-material/DoneAll"
+import DnsIcon from "@mui/icons-material/Dns"
 import swal from "sweetalert"
 import axios from "axios"
+import { useParams, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 
 export default function LabTabs() {
@@ -22,7 +23,6 @@ export default function LabTabs() {
   const [UserName, setUserName] = useState("")
   const [Email, setEmail] = useState("")
   const [Rolename, setRolename] = useState("")
-  const [RoleId, setRole] = useState("")
 
   useEffect(() => {
     fetch("http://192.168.0.12:8000/apiroles/all/" + UserId)
@@ -33,7 +33,6 @@ export default function LabTabs() {
         setUserName(res.UserName)
         setEmail(res.Email)
         setRolename(res.Rolename)
-        setRole(res.RoleId)
       })
       .catch((err) => {
         console.log(err.message)
@@ -55,7 +54,8 @@ export default function LabTabs() {
   const [PermUpdate, setPermUpdate] = useState("")
   const [PermDelete, setPermDelete] = useState("")
 
-  const resetData = () => {
+  const resetData = (e) => {
+    e.preventDefault()
     setPermCreate("")
     setPermRead("")
     setPermUpdate("")
@@ -65,6 +65,19 @@ export default function LabTabs() {
   // insert role data
   const handlePermission = (e) => {
     e.preventDefault()
+    if (
+      PermCreate === "" &&
+      PermRead === "" &&
+      PermUpdate === "" &&
+      PermDelete === ""
+    ) {
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ຂໍ້ມູນໃນຟິວທັງໝົດນີ້ຍັງຫວ່າງຢູ່?",
+        icon: "info",
+        buttons: false,
+      })
+    } else {
       const getData = { UserId, PermCreate, PermRead, PermUpdate, PermDelete }
 
       axios
@@ -74,11 +87,9 @@ export default function LabTabs() {
             title: "ສຳເລັດແລ້ວ",
             text: "ທ່ານຕ້ອງການໄປຫາໜ້າໃດ?",
             icon: "success",
-            buttons: "ຢູ່ບ່ອນນີ້ອິກ",
-          })
-          .then((willDelete) => {
+            buttons: false,
+          }).then((willDelete) => {
             if (willDelete) {
-              
             } else {
               navigate("/settingrole")
             }
@@ -87,8 +98,8 @@ export default function LabTabs() {
         .catch((error) => {
           console.log(error.message)
         })
+    }
   }
-
 
   // Other...............................
 
@@ -111,57 +122,77 @@ export default function LabTabs() {
         sx={{ width: "100%", typography: "body1" }}
         className="lg:pt-0 md:pt-0 sm:pt-14 pt-14">
         <TabContext>
-          <form className="-mt-6" onSubmit={handlePermission}>
+          <form className="-mt-6">
             <TabPanel>
-              <div className="border rounded-md p-4">
-                <h3 className="text-xl flex justify-center items-start w-full my-4 font-semibold text-sky-500">
-                  ການຕັ້ງຄ່າສິດນຳໃຊ້ ໃຫ້ກັບ Users
+              <div className="border bg-white rounded-md p-4 mb-6">
+                <h3 className="text-xl flex justify-center items-start w-full my-8 font-semibold text-sky-500">
+                  ການກຳນົດສິດທີໃຫ້ກັບບັນຊີຜູ້ໃຊ້
                 </h3>
-                <Divider />
-                {/* <pre> {JSON.stringify(Uname)} </pre> */}
                 <div className="lg:flex justify-between items-start mt-4 gap-8">
                   <div className="flex flex-col justify-center items-center gap-2">
-                    <TextField
-                      id="outlined-basic"
-                      label=""
-                      variant="outlined"
-                      value={UserName}
-                      inputProps={{ readOnly: true }}
-                      className="md:w-[27rem] sm:w-full border-b-2 border-b-slate-400 outline-none"
-                    />
-                    <TextField
-                      id="outlined-basic"
-                      label=""
-                      variant="outlined"
-                      value={Email}
-                      inputProps={{ readOnly: true }}
-                      className="md:w-[27rem] sm:w-full"
-                    />
-                    <TextField
-                      id="outlined-basic"
-                      label=""
-                      variant="outlined"
-                      value={Rolename}
-                      inputProps={{ readOnly: true }}
-                      className="md:w-[27rem] sm:w-full"
-                    />
-                    <span className="mt-8">
+                    <div className="py-3 px-4 md:w-[30rem] w-full flex gap-6 justify-start items-center rounded-sm border hover:border-pink-500 bg-gray-100">
+                      <AccountCircleIcon
+                        sx={{ fontSize: 25 }}
+                        className="text-gray-400"
+                      />
+                      <span className="font-medium text-lg text-gray-500">
+                        {UserName}
+                      </span>
+                    </div>
+                    <div className="py-3 px-4 md:w-[30rem] w-full flex gap-6 justify-start items-center rounded-sm border hover:border-pink-500 bg-gray-100">
+                      <EmailIcon
+                        sx={{ fontSize: 25 }}
+                        className="text-gray-400"
+                      />
+                      <span className="font-medium text-lg text-gray-500">
+                        {Email}
+                      </span>
+                    </div>
+                    <div className="py-3 px-4 md:w-[30rem] w-full flex gap-6 justify-start items-center rounded-sm border hover:border-pink-500 bg-gray-100">
+                      <DnsIcon
+                        sx={{ fontSize: 25 }}
+                        className="text-gray-400"
+                      />
+                      {Rolename === "admin" ? (
+                        <span className="font-medium text-lg text-gray-500 capitalize">
+                          {Rolename} ບົດບາດຜູ້ບໍລິຫານລະບົບ
+                        </span>
+                      ) : Rolename === "manager" ? (
+                        <span className="font-medium text-lg text-gray-500 capitalize">
+                          {Rolename} ບົດບາດຜູ້ຈັດການລະບົບ
+                        </span>
+                      ) : (
+                        <span className="font-medium text-lg text-gray-500 capitalize">
+                          {Rolename} ບົດບາດຜູ້ນຳໃຊ້ລະບົບ
+                        </span>
+                      )}
+                    </div>
+
+                    <span className="mt-8 font-medium">
                       ລະຫັດ user: {UserId}
                     </span>
-                    <div className="flex justify-center items-center gap-2">
-                    <span className="w-14 h-12 p-4 flex justify-center items-center text-3xl font-medium text-white rounded-md bg-sky-500">{PermCreate}</span>
-                    <span className="w-14 h-12 p-4 flex justify-center items-center text-3xl font-medium text-white rounded-md bg-sky-500">{PermRead}</span>
-                    <span className="w-14 h-12 p-4 flex justify-center items-center text-3xl font-medium text-white rounded-md bg-sky-500">{PermUpdate}</span>
-                    <span className="w-14 h-12 p-4 flex justify-center items-center text-3xl font-medium text-white rounded-md bg-sky-500">{PermDelete}</span>
+                    <div className="flex justify-center items-center gap-1">
+                      <span className="w-14 h-12 p-4 flex justify-center items-center text-3xl font-bold text-white rounded-md bg-gray-400">
+                        {PermCreate}
+                      </span>
+                      <span className="w-14 h-12 p-4 flex justify-center items-center text-3xl font-bold text-white rounded-md bg-gray-400">
+                        {PermRead}
+                      </span>
+                      <span className="w-14 h-12 p-4 flex justify-center items-center text-3xl font-bold text-white rounded-md bg-gray-400">
+                        {PermUpdate}
+                      </span>
+                      <span className="w-14 h-12 p-4 flex justify-center items-center text-3xl font-bold text-white rounded-md bg-gray-400">
+                        {PermDelete}
+                      </span>
                     </div>
                   </div>
 
                   <FormGroup
                     aria-label="position"
-                    className="md:pl-[5rem] pl-4 md:mt-0 mt-4">
+                    className=" lg:pl-[5rem] md:pl-2 pl-2 lg:mt-0 md:mt-4 mt-4">
                     <div>
                       <span className="font-semibold text-gray-500">
-                        ຂໍ້ກຳນົດການໃຊ້ງານໃນລະບົບ
+                        🔒ຂໍ້ກຳນົດການໃຊ້ງານໃນລະບົບ
                       </span>
                     </div>
                     <Divider />
@@ -200,21 +231,20 @@ export default function LabTabs() {
                   </FormGroup>
                 </div>
 
-                <div className="mt-8 flex lg:justify-end md:justify-end sm:justify-between items-center gap-2">
-                  <Button
+                <div className=" lg:-mt-10 md:mt-4 mt-6 flex lg:justify-end md:justify-between justify-between items-center gap-4">
+                  <button
                     onClick={() => resetData()}
-                    className="active:scale-90 flex justify-center md:w-52 sm:w-full items-center gap-2">
-                    <span className="my-1">ລ້າງຂໍ້ມູນໃໝ່</span>
+                    className="py-3 px-6 active:scale-95 text-white bg-rose-500 font-medium rounded-md flex gap-4 justify-center items0-center">
                     <RestartAltIcon />
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="secondary"
+                    <span>ລ້າງຂໍ້ມູນໃໝ່</span>
+                  </button>
+                  <button
+                    onClick={handlePermission}
                     type="submit"
-                    className="active:scale-90 flex justify-center md:w-52 sm:w-full items-center gap-2">
-                    <span className="my-1">ບັນທຶກການຕັ້ງຄ່າ</span>
+                    className="py-3 px-6 active:scale-95 text-white bg-sky-500 font-medium rounded-md flex gap-4 justify-center items0-center">
                     <DoneAllIcon />
-                  </Button>
+                    <span>ບັນທຶກ</span>
+                  </button>
                 </div>
               </div>
             </TabPanel>

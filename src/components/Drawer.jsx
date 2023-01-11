@@ -99,13 +99,13 @@ export default function PersistentDrawerLeft() {
 
   const handleLogout = () => {
     swal({
-      title: "ທ່ານແນ່ໃຈບໍ?",
-      text: "ບັນຊີນີ້ຈະຖຶກອອກຈາກໂປຣແກຣມທັນທີ",
+      title: "ທ່ານໝັ້ນໃຈແລ້ວບໍ?",
+      text: "ບັນຊີນີ້ຈະຖຶກອອກຈາກລະບົບ ຫາກຕ້ອງການເຂົ້າໃໝ່ ຕ້ອງລ໋ອກອິນເຂົ້າອິກຄັັ້ງ",
       icon: "warning",
       buttons: {
-        cancel: "ບໍ່ຕ້ອງການອອກ",
+        cancel: "ຍັງບໍ່ອອກ",
         catch: {
-          text: "OK",
+          text: "ອອກທັນທີ",
           value: "catch",
         },
       },
@@ -142,7 +142,7 @@ export default function PersistentDrawerLeft() {
           swal({
             title: "ເຊຊັ່ນໝົດອາຍຸແລ້ວ",
             text: "ກະລຸນາລ໋ອກອີນເຂົ້າໃໝ່ອີກຄັັ້ງ!",
-            icons: "error",
+            icon: "error",
             button: "Login New",
           }).then((value) => {
             navigate("/Login")

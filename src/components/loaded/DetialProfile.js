@@ -3,23 +3,20 @@ import Dialog from "@mui/material/Dialog"
 import DialogContent from "@mui/material/DialogContent"
 import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { motion } from "framer-motion"
-import { Avatar, Divider } from "@mui/material"
-import PhotoCameraIcon from "@mui/icons-material/PhotoCamera"
+import { Divider } from "@mui/material"
 import Slide from "@mui/material/Slide"
-import EditImage from "../../user/user_Update/EditImage"
+import EditImage from "../../user/user_Update/EditImage" 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
 })
 
 function DetialProfile() {
-  // get data from user login 
-  const navigate = useNavigate()
+  // get data from user login  
   const { ProfileId } = useParams()
-
-  const [UserId, setUserId] = useState("")
+ 
   const [UserName, setUserName] = useState("")
   const [Email, setEmail] = useState("")
   const [Mobile, setMobile] = useState("")
@@ -38,8 +35,7 @@ function DetialProfile() {
       .then((res) => {
         return res.json()
       })
-      .then((res) => {
-        setUserId(res.UserId)
+      .then((res) => { 
         setUserName(res.UserName)
         setEmail(res.Email)
         setMobile(res.Mobile)
@@ -60,15 +56,16 @@ function DetialProfile() {
          
  
 
-  const handleEditImg = (UserId) => {
-    navigate(`/EditImage/${UserId}`)
-  }
+  // const handleEditImg = (UserId) => {
+  //   navigate(`/EditImage/${UserId}`)
+  // }
 
  
   const [open, setOpen] = React.useState(false)
   const handleClose = () => {
     setOpen(false)
   }
+
 
   return (
     <motion.div
@@ -79,13 +76,12 @@ function DetialProfile() {
         <div className="md:w-[25rem] w-full h-auto border rounded-md bg-white flex flex-col justify-start items-center gap-2 p-3">
           <div className="flex flex-col justify-center items-center gap-2 relative">
            
-            <Avatar
+            <img
               alt={UserName}
               src={`http://192.168.0.12:8000/apilogin/${Img}`}
               sx={{ width: 130, height: 130 }}
-              className="shadow-lg"
-            />
-            {/* <img src="" alt="" /> */}
+              className="shadow-lg w-full h-[10rem] object-cover rounded-md"
+            /> 
             <h2 className="text-lg flex gap-2 py-2 justify-center items-center font-bold text-gray-600 border-b-2 border-b-sky-500 w-full">
               <span>{FirstName}</span>
               <span className=" uppercase">{LastName}</span>

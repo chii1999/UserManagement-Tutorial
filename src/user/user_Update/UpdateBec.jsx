@@ -45,11 +45,7 @@ export default function AddProfile() {
       .catch((err) => {
         console.log(err.message)
       })
-
   }, [ProfileId])
-  
-
-
 
   // ພາກສ່ວນດຶງຂໍ້ມູນຈາກການເລືອກແຂວງ ໃຫ້ສະແດງເມືອງສະເພາະແຂວງນັ້ນ.
   const [countrydata, setCountrydata] = useState([])
@@ -87,52 +83,51 @@ export default function AddProfile() {
     setDistrictId(getstateid)
   }
 
-
   // create profile
   const handleAddData = (e) => {
     e.preventDefault()
-      var myHeaders = new Headers()
-      myHeaders.append("Content-Type", "application/json")
-      // Add Profile Info
-      var raw = JSON.stringify({
-        ProvinceId: ProvinceId, 
-        DistrictId: DistrictId,
-        FirstName: FirstName,
-        LastName: LastName,
-        Gender: Gender,
-        Dob: Dob,
-        VillageName: VillageName,
-        ProfileId: ProfileId
+    var myHeaders = new Headers()
+    myHeaders.append("Content-Type", "application/json")
+    // Add Profile Info
+    var raw = JSON.stringify({
+      ProvinceId: ProvinceId,
+      DistrictId: DistrictId,
+      FirstName: FirstName,
+      LastName: LastName,
+      Gender: Gender,
+      Dob: Dob,
+      VillageName: VillageName,
+      ProfileId: ProfileId,
+    })
+
+    var requestOptions = {
+      method: "PUT",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    }
+
+    fetch("http://192.168.0.12:8000/apiprofile/update", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.status === "ok") {
+          swal({
+            title: "ສຳເລັດແລ້ວ",
+            text: "ການປ່ຽນແປງຂໍ້ມູນນີ້ດຳເນີນໄປດ້ວຍດີ",
+            icon: "success",
+            button: "OK",
+          })
+          navigate("/BannerProfile")
+        } else if (result.status === "error") {
+          swal({
+            title: "Error!",
+            text: "ເກີດຂໍ້ຜິດພາດທັງ Server",
+            icon: "error",
+            button: "Exit",
+          })
+        }
       })
-
-      var requestOptions = {
-        method: "PUT",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow",
-      }
-
-      fetch("/apiprofile/update", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          if (result.status === "ok") {
-            swal({
-              title: "ສຳເລັດແລ້ວ",
-              text: "ການປ່ຽນແປງຂໍ້ມູນນີ້ດຳເນີນໄປດ້ວຍດີ",
-              icon: "success",
-              button: "OK",
-            })
-            navigate("/UserList")
-          } else if (result.status === "error") {
-            swal({
-              title: "Error!",
-              text: "ເກີດຂໍ້ຜິດພາດທັງ Server",
-              icon: "error",
-              button: "Exit",
-            })
-          }
-        })
-        .catch((error) => console.log("error", error))
+      .catch((error) => console.log("error", error))
   }
 
   const handleBack = () => {
@@ -152,9 +147,7 @@ export default function AddProfile() {
 
           <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-2 px-6">
             <div className="w-full h-auto my-2">
-              <span className="font-normal text-gray-500 -mb-2">
-                ແກ້ໄຂຊື່:
-              </span>
+              <span className="font-normal text-gray-500 -mb-2">ແກ້ໄຂຊື່:</span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <TextSnippetIcon className="text-gray-400" />
@@ -170,7 +163,9 @@ export default function AddProfile() {
             </div>
 
             <div className="w-full h-auto my-2">
-              <span className="font-normal text-gray-500 -mb-2">ແກ້ໄຂນາມສະກຸນ:</span>
+              <span className="font-normal text-gray-500 -mb-2">
+                ແກ້ໄຂນາມສະກຸນ:
+              </span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <TextSnippetIcon className="text-gray-400" />
@@ -191,20 +186,33 @@ export default function AddProfile() {
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <SpellcheckIcon className="text-gray-400" />
                 </span>
-                <select
-                  onChange={(e) => setGender(e.target.value)}
-                  id="gender"
-                  className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none">
-                  <option value={Gender}>ເພດ {Gender}</option>
-                  <option value="ຍິງ">ເພດ ຍິງ</option>
-                  <option value="ຊາຍ">ເພດ ຊາຍ</option>
-                </select>
+                {Gender === "ຍິງ" ? (
+                  <select
+                    onChange={(e) => setGender(e.target.value)}
+                    id="gender"
+                    className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none">
+                    <option selected value="ຍິງ">
+                      ເພດ ຍິງ
+                    </option>
+                    <option value="ຊາຍ">ເພດ ຊາຍ</option>
+                  </select>
+                ) : (
+                  <select
+                    onChange={(e) => setGender(e.target.value)}
+                    id="gender"
+                    className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none">
+                    <option value="ຍິງ">
+                      ເພດ ຍິງ
+                    </option>
+                    <option selected value="ຊາຍ">ເພດ ຊາຍ</option>
+                  </select>
+                )}
               </label>
             </div>
 
             <div className="w-full h-auto my-2">
               <span className="font-normal text-gray-500 -mb-2">
-                ແກ້ໄຂວັນທີ, ເດືອນ, ປີເກີດ:
+                ແກ້ໄຂວັນທີ, ເດືອນ, ປີເກີດ: {Dob}
               </span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -214,7 +222,7 @@ export default function AddProfile() {
                   onChange={(e) => setDob(e.target.value)}
                   value={Dob}
                   className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none"
-                  type="text"
+                  type="date"
                 />
               </label>
             </div>
@@ -318,7 +326,10 @@ export default function AddProfile() {
           </div> */}
 
           <div className="py-2 px-8 text-right w-full flex justify-end items-center gap-6">
-            <Link onClick={handleBack} underline="none" className="py-2 px-6 border font-medium cursor-pointer text-gray-500 bg-gray-200 rounded-sm">
+            <Link
+              onClick={handleBack}
+              underline="none"
+              className="py-2 px-6 border font-medium cursor-pointer text-gray-500 bg-gray-200 rounded-sm">
               ກັບຄືນ
             </Link>
             <Button

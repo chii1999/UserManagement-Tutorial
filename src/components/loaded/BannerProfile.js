@@ -3,14 +3,13 @@ import Dialog from "@mui/material/Dialog"
 import DialogContent from "@mui/material/DialogContent"
 import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn"
 import { useNavigate } from "react-router-dom"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Avatar, Divider } from "@mui/material"
 import QuestionApp from "../QuestionApp"
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera"
 import Slide from "@mui/material/Slide"
-import EditImage from "../../user/user_Update/EditImage" 
+import EditImage from "../../user/user_Update/EditImage"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -36,7 +35,7 @@ function BannerProfile() {
       .then((result) => {
         if (result.status === "ok") {
           setUser(result.userlogin)
-        } 
+        }
       })
       .catch((error) => console.log("error", error))
   }, [user])
@@ -88,16 +87,18 @@ function BannerProfile() {
     setOpen(false)
   }
 
+  const animateForm = { opacity: 0, y: -40 }
+  const animateTo = { opacity: 1, y: 0 }
+  const [selectedId, setSelectedId] = useState(null)
 
   return (
-    <motion.div
-      animate={{ x: 0 }}
-      initial={{ x: -100 }}
-      className="w-full lg:pt-0 md:pt-14 sm:pt-14 mb-10 pt-14 flex flex-col justify-between items-start gap-4">
+    <div className="w-full lg:pt-0 md:pt-14 sm:pt-14 mb-10 pt-14 flex flex-col justify-between items-start gap-4">
       <div className="md:flex justify-between items-start gap-4 w-full">
         <div className="md:w-[25rem] w-full h-auto border rounded-md bg-white flex flex-col justify-start items-center gap-2 p-3">
           <div className="flex flex-col justify-center items-center gap-2 relative">
-            <button onClick={()=>handleEditImg(user.UserId)} className="absolute top-[6rem] z-10 right-3">
+            <button
+              onClick={() => handleEditImg(user.UserId)}
+              className="absolute top-[6rem] z-10 right-3">
               <PhotoCameraIcon
                 className="text-sky-500 stroke-gray-200"
                 sx={{ fontSize: 30 }}
@@ -160,22 +161,38 @@ function BannerProfile() {
         <div className="w-full h-auto flex flex-col gap-4">
           <div className="w-full h-42 md:mt-0 mt-4">
             <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-2">
-              <div className="lg:w-[10rem] md:w-[6rem] sm:w-full h-20 bg-green-500 border rounded-md flex gap-4 flex-col justify-center items-center text-white">
+              <motion.div
+                initial={animateForm}
+                animate={animateTo}
+                transition={{ delay: 0.05 }}
+                className="lg:w-[10rem] md:w-[6rem] sm:w-full h-20 bg-green-500 border rounded-md flex gap-4 flex-col justify-center items-center text-white">
                 <span className=" font-bold text-xl">{user.PermCreate}</span>
                 <span>ບັນທຶກຂໍ້ມູນ</span>
-              </div>
-              <div className="lg:w-[10rem] md:w-[6rem] sm:w-full h-20 bg-sky-500 border rounded-md flex gap-4 flex-col justify-center items-center text-white">
-              <span className=" font-bold text-xl"> {user.PermRead} </span>
+              </motion.div>
+              <motion.div
+                initial={animateForm}
+                animate={animateTo}
+                transition={{ delay: 0.1 }}
+                className="lg:w-[10rem] md:w-[6rem] sm:w-full h-20 bg-sky-500 border rounded-md flex gap-4 flex-col justify-center items-center text-white">
+                <span className=" font-bold text-xl"> {user.PermRead} </span>
                 <span>ອ່ານຂໍ້ມູນ</span>
-              </div>
-              <div className="lg:w-[10rem] md:w-[6rem] sm:w-full h-20 bg-orange-500 border rounded-md flex gap-4 flex-col justify-center items-center text-white">
-              <span className=" font-bold text-xl"> {user.PermUpdate} </span>
+              </motion.div>
+              <motion.div
+                initial={animateForm}
+                animate={animateTo}
+                transition={{ delay: 0.2 }}
+                className="lg:w-[10rem] md:w-[6rem] sm:w-full h-20 bg-orange-500 border rounded-md flex gap-4 flex-col justify-center items-center text-white">
+                <span className=" font-bold text-xl"> {user.PermUpdate} </span>
                 <span>ແກ້ໄຂຂໍ້ມູນ</span>
-              </div>
-              <div className="lg:w-[10rem] md:w-[6rem] sm:w-full h-20 bg-pink-500 border rounded-md flex gap-4 flex-col justify-center items-center text-white">
-              <span className=" font-bold text-xl"> {user.PermDelete} </span>
+              </motion.div>
+              <motion.div
+                initial={animateForm}
+                animate={animateTo}
+                transition={{ delay: 0.3 }}
+                className="lg:w-[10rem] md:w-[6rem] sm:w-full h-20 bg-pink-500 border rounded-md flex gap-4 flex-col justify-center items-center text-white">
+                <span className=" font-bold text-xl"> {user.PermDelete} </span>
                 <span>ລຶບຂໍ້ມູນ</span>
-              </div>
+              </motion.div>
             </div>
           </div>
           <div className="w-full h-auto border rounded-md bg-white md:mt-0 mt-4 p-4 relative">
@@ -221,7 +238,6 @@ function BannerProfile() {
         </span>
         <QuestionApp />
       </div>
-
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -233,11 +249,11 @@ function BannerProfile() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            <EditImage /> 
+            <EditImage />
           </DialogContentText>
         </DialogContent>
       </Dialog>
-    </motion.div>
+    </div>
   )
 }
 

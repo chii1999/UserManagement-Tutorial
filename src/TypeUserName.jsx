@@ -17,21 +17,33 @@ function SignUp() {
 
   const handleNewPassword = (event) => {
     event.preventDefault()
-     if (!UserName) {
-      swal("ປ້ອນຊື່ຜູ້ນຳຊ້, ອີເມວ ຫຼື ເບີໂທລະສັບ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+     if (!UserName) { 
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ປ້ອນຊື່ບັນຊີຜູ້ໃຊ້, ອີເມວ ຫຼື ເບີໂທລະສັບ!",
+        icon: "warning",
+        button: false,
       })
-    } else if (!newPass) {
-      swal("ປ້ອນລະຫັດຜ່ານໃໝ່!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+    } else if (!newPass) { 
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ປ້ອນລະຫັດຜ່ານໃໝ່ຂອງທ່ານ!",
+        icon: "warning",
+        button: false,
       })
-    } else if (!cpassword) {
-      swal("ຢືນຢັນລະຫັດຜ່ານໃໝ່!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+    } else if (!cpassword) { 
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ຢືນຢັນລະຫັດຜ່ານໃໝ່ພ້ອມ!",
+        icon: "warning",
+        button: false,
       })
-    } else if (cpassword !== newPass) {
-      swal("ຢືນຢັນລະຫັດຜ່ານບໍຕົງກັນ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+    } else if (cpassword !== newPass) { 
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ຢືນຢັນລະຫັດຜ່ານບໍ່ຕົງກັນ!",
+        icon: "warning",
+        button: false,
       })
     } else {
       var myHeaders = new Headers()
@@ -72,14 +84,14 @@ function SignUp() {
     }
   }
 
-  const mobile = <span>ຊື່ຜູ້ນຳຊ້, ອີເມວ ຫຼື ເບີໂທລະສັບ</span>
+  const mobile = <span>ຊື່ບັນຊີ, ອີເມວ ຫຼື ເບີໂທລະສັບ</span>
   const password = <span>ລະຫັດຜ່ານໃໝ່</span>
   const cpass = <span>ຢືນຢັນລະຫັດຜ່ານໃໝ່</span>
-  const nameButton = <span>ສ້າງລະຫັດຜ່ານໃໝ່</span>
+  const nameButton = <span>ຢືນຢັນ</span>
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" sx={{ width: 550, height: 400 }} >
+      <Container component="main"  className="w-full h-auto" >
         <CssBaseline />
         <Box
           sx={{

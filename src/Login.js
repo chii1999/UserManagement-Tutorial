@@ -15,6 +15,7 @@ import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
 import DialogActions from "@mui/material/DialogActions"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
+import LockOpenIcon from "@mui/icons-material/LockOpen"
 import LockIcon from "@mui/icons-material/Lock"
 import Slide from "@mui/material/Slide"
 import TypeUserName from "./TypeUserName"
@@ -97,11 +98,14 @@ export default function Login() {
   }
 
   // show password
-
-  // const handleClickShowPassword = (e) => {
-  //   e.preventDefault()
-  //   showPass()
-  // }
+  const [passwordType, setPasswordType] = useState("password")
+  const handleShow = () => {
+    if (passwordType === "password") {
+      setPasswordType("text")
+      return
+    }
+    setPasswordType("password")
+  }
 
   const [open, setOpen] = React.useState(false)
 
@@ -123,31 +127,33 @@ export default function Login() {
   }
 
   const title = (
-    <span className="md:text-[3rem] text-[2.7rem] font-bold bg-gradient-to-l from-blue-200 via-blue-400 to-blue-200 w-full text-white py-2 pt-8 px-32 rounded-md">ລະບົບລ໋ອກອິນ</span>
+    <span className="md:block hidden md:text-[3rem] text-[1.78rem] font-bold bg-gradient-to-l from-blue-200 via-blue-400 to-blue-200 w-full text-white py-2 pt-8 px-32 rounded-md">
+      ລະບົບລ໋ອກອິນ
+    </span>
   )
   const forgotPassword = (
-    <span className="font-medium text-sm text-gray-500">Forgot Password</span>
+    <span className="font-medium text-sm text-gray-500">ລືມລະຫັດຜ່ານ</span>
   )
 
   const txtSigUp = (
     <span className="text-white md:text-2xl text-md font-medium">
-      💖 ລົງທະບຽນ ບັນຊີນຳໃຊ້ໃໝ່ 💖
+      ລົງທະບຽນ ບັນຊີນຳໃຊ້ໃໝ່
     </span>
   )
   const txtForgotpassword = (
-    <span className="text-white text-2xl font-medium">
+    <span className="text-white md:text-2xl text-lg font-medium">
       ສ້າງລະຫັດຜ່ານໃໝ່ແທນຕົວເກົ່າ
     </span>
   )
   const txtButton = (
-    <span className="text-gray-500 text-sm font-medium">Create New Account</span>
+    <span className="text-gray-500 text-sm font-medium">ລົງທະບຽນບັນຊີໃໝ່</span>
   )
   const close = (
     <span className="text-red-500 text-sm font-medium">ປິດໜ້ານີ້ອອກ</span>
   )
 
   return (
-    <div className="bg-gradient-to-t from-blue-400 py-[4rem] md:h-screen h-auto">
+    <div className="bg-gradient-to-t from-blue-400 py-[4rem] h-screen">
       <div className="flex flex-col justify-center items-center gap-2 w-full">
         <Avatar
           sx={{ bgcolor: "info.main", width: 115, height: 115 }}
@@ -177,21 +183,33 @@ export default function Login() {
                 </span>
                 <input
                   onChange={(e) => setUserName(e.target.value)}
-                  className="placeholder:text-slate-400 placeholder:font-normal placeholder:text-sm block bg-white w-full border text-gray-400 font-medium border-slate-300 rounded-md py-3 pr-9 pl-3 shadow-sm focus:outline-none "
-                  placeholder="Username, Email or Phone number"
+                  className="placeholder:text-slate-400 placeholder:font-normal placeholder:text-sm block bg-white w-full border text-gray-400 font-medium border-slate-300 rounded-md py-4 pr-9 pl-3 shadow-sm focus:outline-none "
+                  placeholder="ຊື່ບັນຊີຜູ້ໃຊ້, ອີເມວ ຫຼື ເບີໂທລະສັບ"
                   type="text"
                   name="search"
                 />
               </label>
               <label className="relative block mt-6">
-                <span className="absolute inset-y-0 right-2 flex items-center pl-2">
-                  <LockIcon sx={{ fontSize: 30, color: "#00bcd4" }} />
-                </span>
+                <Box
+                  onClick={handleShow}
+                  className="absolute inset-y-0 right-2 flex items-center border-none outline-none pl-2">
+                  {passwordType === "password" ? (
+                    <LockIcon
+                      sx={{ fontSize: 30, color: "#00bcd4" }}
+                      className=" cursor-pointer"
+                    />
+                  ) : (
+                    <LockOpenIcon
+                      sx={{ fontSize: 30, color: "#00bcd4" }}
+                      className=" cursor-pointer"
+                    />
+                  )}
+                </Box>
                 <input
                   onChange={(e) => setPassword(e.target.value)}
-                  className="placeholder:text-slate-400 block bg-white w-full border text-gray-400 font-medium border-slate-300 rounded-md py-3 pr-9 pl-3 shadow-sm focus:outline-none "
+                  className="placeholder:text-slate-400 block bg-white w-full border text-gray-400 font-medium border-slate-300 rounded-md py-4 pr-9 pl-3 shadow-sm focus:outline-none "
                   placeholder="*********"
-                  type="password"
+                  type={passwordType}
                   name="search"
                 />
               </label>

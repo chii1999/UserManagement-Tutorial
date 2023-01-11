@@ -1,25 +1,25 @@
-import React, {useState , useEffect } from "react"
+import React from "react"
 import DatatableProfile from "./DatatableProfile"
 import { motion } from "framer-motion"
-import axios from "axios"
+// import axios from "axios"
 
 export default function UserList() {
   
-  const [profiledata, setProfiledata] = useState([])
+  // const [profiledata, setProfiledata] = useState([])
 
   
-  const getProfile = async () => {
-    try {
-      const response = await axios.get("http://192.168.43.173:8000/apiprofile")
-      setProfiledata(response.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const getProfile = async () => {
+  //   try {
+  //     const response = await axios.get("http://192.168.0.12:8000/apiprofile")
+  //     setProfiledata(response.data)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
-  useEffect(() => {
-    getProfile()
-  }, [])
+  // useEffect(() => {
+  //   getProfile()
+  // }, [])
 
 
   return (

@@ -79,7 +79,7 @@ export default function RoleName() {
         {items.map((el, index) => (
           <motion.div
             animate={{ y: 0 }}
-            initial={{ y: -100 }} 
+            initial={{ y: -100 }}
             key={index}
             className="w-full h-40 border-b rounded-sm relative flex flex-col justify-center items-center gap-2">
             <div className="w-14 h-14 text-xl font-bold absolute top-4 left-4 rounded-full bg-sky-400 text-white flex justify-center items-center shadow-md">
@@ -90,8 +90,19 @@ export default function RoleName() {
               ສະຖານະ ຫຼື ບົດບາດ
             </span>
             <h2 className="text-xl font-bold text-red-500 capitalize">
-              {" "}
-              {el.RoleName}{" "}
+              {el.RoleName === "admin" ? (
+                <span className="capitalize">
+                  (Admin) ຜູ້ບໍລິຫານ
+                </span>
+              ) : el.RoleName === "manager" ? (
+                <span className="capitalize">
+                  (Manager) ຜູ້ຈັດການ
+                </span>
+              ) : (
+                <span className="capitalize">
+                  (User) ຜູ້ນຳໃຊ້
+                </span>
+              )}
             </h2>
           </motion.div>
         ))}

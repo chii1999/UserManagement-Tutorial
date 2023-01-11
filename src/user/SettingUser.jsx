@@ -7,7 +7,6 @@ import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import FormControl from "@mui/material/FormControl"
 import Select from "@mui/material/Select"
-import Button from "@mui/material/Button"
 import { useParams } from "react-router-dom"
 import swal from "sweetalert"
 import axios from "axios"
@@ -16,7 +15,7 @@ import EmailIcon from "@mui/icons-material/Email"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import SettingsPhoneIcon from "@mui/icons-material/SettingsPhone"
 
-const select = <span className="font-semibold text-sky-600">-- ເລືອກ -- </span> 
+const select = <span className="font-semibold text-sky-600">-- ເລືອກ -- </span>
 
 export default function LabTabs() {
   const { UserId } = useParams()
@@ -162,7 +161,19 @@ export default function LabTabs() {
                             </MenuItem>
                             {roles.map((getrole, index) => (
                               <MenuItem key={index} value={getrole.RoleId}>
-                                <span className="font-medium text-gray-500 capitalize">{getrole.RoleName}</span>
+                                {getrole.RoleName === "admin" ? (
+                                  <span className="font-medium text-gray-500 capitalize">
+                                    (Admin) ຜູ້ບໍລິຫານ
+                                  </span>
+                                ) : getrole.RoleName === "manager" ? (
+                                  <span className="font-medium text-gray-500 capitalize">
+                                    (Manager) ຜູ້ຈັດການ
+                                  </span>
+                                ) : (
+                                  <span className="font-medium text-gray-500 capitalize">
+                                    (User) ຜູ້ນຳໃຊ້
+                                  </span>
+                                )}
                               </MenuItem>
                             ))}
                           </Select>
@@ -171,7 +182,9 @@ export default function LabTabs() {
                     </div>
                     <div className=" relative flex flex-col md:w-[20rem] w-full h-[19rem] justify-end items-end gap-4 p-2">
                       <div className="w-full absolute top-0 left-0">
-                        <h3 className="text-red-400 font-medium mb-2">⚠️ ຄຳເຕືອນ:</h3>
+                        <h3 className="text-red-400 font-medium mb-2">
+                          ⚠️ ຄຳເຕືອນ:
+                        </h3>
                         <span className="text-sm font-medium text-justify text-gray-500">
                           ບັນຊີທີໄດ້ກຳນົດບົດບາດແລ້ວ ຈະຕ້ອງໄດ້ປະຕິບັດຕາມຂໍ້ກຳນົດ
                           ເຊັ່ນ: ຖ້າເປັນ admin ຈະສາມາດຄວບຄຸມໄດ້ທຸກຢ່າງໃນລະບົບ,

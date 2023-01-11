@@ -1,13 +1,13 @@
-import * as React from "react"
+import  React, { useState, useEffect } from "react"
 import Box from "@mui/material/Box"
 import Menu from "@mui/material/Menu"
 import IconButton from "@mui/material/IconButton"
-import Tooltip from "@mui/material/Tooltip"
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive"
+import Tooltip from "@mui/material/Tooltip" 
 import NotifiData from "./loaded/NotifiData"
 import Badge from "@mui/material/Badge"
 import Stack from "@mui/material/Stack"
 import MailIcon from "@mui/icons-material/Mail"
+import axios from "axios"
 
 export default function Notification() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -45,6 +45,24 @@ export default function Notification() {
   //     .catch((error) => console.log("error", error))
   // }, [user])
 
+  
+  const [profile, setProfile] = useState("")
+
+  useEffect(() => {
+    getProfile()
+  }, [])
+
+  const getProfile = async () => {
+    // count profile
+    try {
+      const rescoutProfile = await axios.get("http://192.168.0.12:8000/countuser")
+      setProfile(rescoutProfile.data)
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -57,7 +75,7 @@ export default function Notification() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}>
             <Stack spacing={2} direction="row">
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={profile.count} color="primary">
                 <MailIcon color="action" />
               </Badge>
             </Stack>

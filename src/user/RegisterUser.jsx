@@ -196,6 +196,13 @@ export default function AddProfile() {
         icon: "info",
         button: false,
       })
+    } else if (!image) {
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ເລືອກຮູບໂປຣໄຟຣຂອງທ່ານກ່ອນ!",
+        icon: "info",
+        button: false,
+      })
     } else {
       var formData = new FormData()
       formData.append("image", image)
@@ -364,7 +371,7 @@ export default function AddProfile() {
                 <input
                   onChange={(e) => setFirstName(e.target.value)}
                   name="FirstName"
-                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-12 py-2 outline-none"
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none"
                   placeholder="........."
                   type="text"
                 />
@@ -380,7 +387,7 @@ export default function AddProfile() {
                 <input
                   onChange={(e) => setLastName(e.target.value)}
                   name="LastName"
-                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-12 py-2 outline-none"
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none"
                   placeholder="........."
                   type="text"
                 />
@@ -396,8 +403,8 @@ export default function AddProfile() {
                 <select
                   onChange={(e) => setGender(e.target.value)}
                   name="Gender"
-                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-12 py-2 outline-none">
-                  <option value="">--ເລຶອກເພດ--</option>
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none">
+                  <option value="">--ເລຶອກ--</option>
                   <option value="ຍິງ">ເພດຍິງ</option>
                   <option value="ຊາຍ">ເພດຊາຍ</option>
                 </select>
@@ -415,7 +422,7 @@ export default function AddProfile() {
                 <input
                   onChange={(e) => setDob(e.target.value)}
                   name="Dob"
-                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-12 py-2 outline-none"
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none"
                   type="date"
                 />
               </label>
@@ -432,8 +439,8 @@ export default function AddProfile() {
                 <select
                   onChange={(e) => handlecountry(e)}
                   name="ProvinceId"
-                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-12 py-2 outline-none">
-                  <option value="">--ເລືອກແຂວງ--</option>
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none">
+                  <option value="">--ເລືອກ--</option>
 
                   {countrydata.map((getcountry, index) => (
                     <option key={index} value={getcountry.ProvinceId}>
@@ -456,8 +463,8 @@ export default function AddProfile() {
                   onChange={(e) => handleDistrict(e)}
                   name="DistrictId"
                   disabled={enable}
-                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-12 py-2 outline-none">
-                  <option value="">--ເລືອກເມືອງ--</option>
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none">
+                  <option value="">--ເລືອກ--</option>
 
                   {statedata.map((getdistrict, index) => (
                     <option key={index} value={getdistrict.DistrictId}>
@@ -478,7 +485,7 @@ export default function AddProfile() {
                 <input
                   onChange={(e) => setVillageName(e.target.value)}
                   name="VillageName"
-                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-12 py-2 outline-none"
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none"
                   placeholder="........."
                   type="text"
                 />
@@ -494,7 +501,7 @@ export default function AddProfile() {
                   onChange={setimgfile}
                   name="image"
                   accept="image/jpg, image/png, image/jpeg, image/gif"
-                  className=" border file:bg-sky-500 file:text-white file:border-none text-sky-500 file:rounded-full placeholder:text-slate-400 block rounded-sm w-full pl-2 py-2 outline-none"
+                  className=" border file:bg-green-500 file:text-gray-200 file:border-none file:rounded-full placeholder:text-slate-400 block rounded-sm w-full pl-2 py-2 outline-none"
                   type="file"
                 />
               </label>
@@ -535,16 +542,16 @@ export default function AddProfile() {
             </div>
           </div> */}
 
-          <div className="py-2 mt-8 px-8 w-full flex gap-6">
+          <div className="py-2 mt-8 px-6 w-full flex justify-end items-center gap-4">
             <button
               type="submit"
-              className="py-2 px-12 text-white text-sm rounded-sm shadow-md bg-green-600 hover:bg-green-500 active:scale-95">
+              className="py-2 px-12 text-white text-sm rounded-sm shadow-md bg-sky-600 hover:bg-sky-500 active:scale-95">
               <AddIcon />
-              <span>ສ້າງບັນຊີ</span>
+              <span>ບັນທຶກຂໍ້ມູນ</span>
             </button>
             <button
               type="reset"
-              className="py-2 px-12 text-white text-sm rounded-sm shadow-md bg-gray-600 hover:bg-gray-500 active:scale-95">
+              className="py-2 px-12 text-white text-sm rounded-sm shadow-md bg-rose-500 hover:bg-rose-400 active:scale-95">
               <RestartAltIcon />
               <span>ລ້າງຂໍ້ມູນໃໝ່</span>
             </button>
