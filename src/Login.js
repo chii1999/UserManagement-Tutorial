@@ -127,9 +127,16 @@ export default function Login() {
   }
 
   const title = (
-    <span className="md:block hidden md:text-[3rem] text-[1.78rem] font-bold bg-gradient-to-l from-blue-200 via-blue-400 to-blue-200 w-full text-white py-2 pt-8 px-32 rounded-md">
-      ລະບົບລ໋ອກອິນ
+    <span className="lg:block hidden md:text-[3.33rem] text-[2.35rem] absolute z-40 top-8 text-center font-bold w-full text-white py-2 pt-8 px-32 rounded-md">
+      ລະບົບຈັດກການຜູ້ນຳໃຊ້
     </span>
+  )
+  const logo = (
+    <div className="w-full flex justify-center items-center text-center absolute z-40 md:-top-8 top-10">
+      <div className="lg:hidden block w-[2em] h-[2em] shadow-md border-8 border-t-yellow-500 border-b-green-500 border-white flex justify-center items-center rounded-full bg-sky-500 text-yellow-500 md:text-white font-bold text-[3em]">
+        W
+      </div>
+    </div>
   )
   const forgotPassword = (
     <span className="font-medium text-sm text-gray-500">ລືມລະຫັດຜ່ານ</span>
@@ -153,146 +160,78 @@ export default function Login() {
   )
 
   return (
-    <div className="bg-gradient-to-t from-blue-400 py-[4rem] h-screen">
-      <div className="flex flex-col justify-center items-center gap-2 w-full">
-        <Avatar
-          sx={{ bgcolor: "info.main", width: 115, height: 115 }}
-          className=" drop-shadow-md border-[.57rem] border-white">
-          <img
-            className="w-full h-full object-cover"
-            src="https://imgs.search.brave.com/jYDh7lkgQR7YoQaLpUKG4Gk-z-OVMzxJ4mlJ_BGQqCo/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5p/SFhXSDJLOTFZQVk5/Vm1HS21CaUVBSGFF/SyZwaWQ9QXBp"
-            alt=""
-          />
-        </Avatar>
-        <Typography>{title}</Typography>
+    <div className="bg-gradient-to-t from-cyan-600 bg-cyan-500  h-screen flex justify-center items-center">
+      <div className=" flex justify-center items-center relative lg:w-[70%] md:w-[50%] sm:w-full w-full lg:h-[35rem] md:h-[25rem] h-full md:rounded-2xl rounded-sm shadow-lg overflow-hidden">
+        <h1>{title}</h1>
+        <div>{logo}</div>
+        <img
+          src="https://imgs.search.brave.com/eREFKqPnNPvHgrn19F7cUujADYP4pCjqrReFfCrmFf4/rs:fit:1200:1020:1/g:ce/aHR0cHM6Ly9pbm5v/dmF0aXZlYnVpbGRp/bmdtYXRlcmlhbHMu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIwLzA4L21lZGlj/YWwtb2ZmaWNlLWJ1/aWxkaW5nLWRlc2ln/bi0wMi0xNTM2eDEw/MjAuanBn"
+          alt=""
+          className="w-full h-full object-cover brightness-75"
+        />
+        <form
+          onSubmit={handleSubmit}
+          className="w-full md:h-[22em] h-[35em] bg-[#fffffff3] md:pt-0 pt-6 absolute z-10 left-0 bottom-0 flex flex-col justify-start md:justify-center items-center  gap-4">
+          <label class="block lg:w-[50%] md:w-[80%] w-[85%]">
+            <span class="after:content-['*'] after:ml-0.5 after:text-rose-500 block text-lg font-bold text-slate-700">
+              ຊື່ບັນຊີ, ອີເມວ ຫຼື ເບີໂທລະສັບ
+            </span>
+            <input
+              onChange={(e) => setUserName(e.target.value)}
+              type="text"
+              class="mt-1 px-3 py-4 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-400 block w-full rounded-sm md:text-md text-sm"
+              placeholder="you@example.com"
+            />
+          </label>
+
+          <label class="block relative lg:w-[50%] md:w-[80%] w-[85%]">
+            <span class="after:content-['*'] after:ml-0.5 after:text-rose-500 block text-lg font-bold text-slate-700">
+              ລະຫັດຜ່ານ
+            </span>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              type={passwordType}
+              class="mt-1 px-3 py-4 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-400 block w-full rounded-sm md:text-md text-sm"
+              placeholder="******************"
+            />
+            <Box onClick={handleShow} className="absolute top-11 right-2">
+              {passwordType === "password" ? (
+                <LockIcon
+                  sx={{ fontSize: 30, color: "#00bcd4" }}
+                  className=" cursor-pointer"
+                />
+              ) : (
+                <LockOpenIcon
+                  sx={{ fontSize: 30, color: "#00bcd4" }}
+                  className=" cursor-pointer"
+                />
+              )}
+            </Box>
+          </label>
+
+          <div className="lg:w-[50%] md:w-[80%] w-[85%] flex justify-between items-center">
+            <Link
+              variant="outlined"
+              className="cursor-pointer"
+              onClick={handleForgotpassword}>
+              {forgotPassword}
+            </Link>
+            <Link
+              variant="outlined"
+              className="cursor-pointer"
+              onClick={handleSignUp}>
+              {txtButton}
+            </Link>
+          </div>
+
+          <button
+            type="submit"
+            className="py-3 w-[50%] shadow-md rounded-full active:scale-95 bg-sky-500 text-white text-center">
+            sign in
+          </button>
+        </form>
       </div>
-      <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}>
-            <form onSubmit={handleSubmit} className="md:w-[25rem] w-full">
-              <label className="relative block">
-                <span className="absolute inset-y-0 right-2 flex items-center pl-2">
-                  <AccountCircleIcon sx={{ fontSize: 30, color: "#00bcd4" }} />
-                </span>
-                <input
-                  onChange={(e) => setUserName(e.target.value)}
-                  className="placeholder:text-slate-400 placeholder:font-normal placeholder:text-sm block bg-white w-full border text-gray-400 font-medium border-slate-300 rounded-md py-4 pr-9 pl-3 shadow-sm focus:outline-none "
-                  placeholder="ຊື່ບັນຊີຜູ້ໃຊ້, ອີເມວ ຫຼື ເບີໂທລະສັບ"
-                  type="text"
-                  name="search"
-                />
-              </label>
-              <label className="relative block mt-6">
-                <Box
-                  onClick={handleShow}
-                  className="absolute inset-y-0 right-2 flex items-center border-none outline-none pl-2">
-                  {passwordType === "password" ? (
-                    <LockIcon
-                      sx={{ fontSize: 30, color: "#00bcd4" }}
-                      className=" cursor-pointer"
-                    />
-                  ) : (
-                    <LockOpenIcon
-                      sx={{ fontSize: 30, color: "#00bcd4" }}
-                      className=" cursor-pointer"
-                    />
-                  )}
-                </Box>
-                <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="placeholder:text-slate-400 block bg-white w-full border text-gray-400 font-medium border-slate-300 rounded-md py-4 pr-9 pl-3 shadow-sm focus:outline-none "
-                  placeholder="*********"
-                  type={passwordType}
-                  name="search"
-                />
-              </label>
 
-              <div className="mt-4 flex justify-between items-center w-full">
-                <Link
-                  variant="outlined"
-                  className="cursor-pointer"
-                  onClick={handleForgotpassword}>
-                  {forgotPassword}
-                </Link>
-                <Link
-                  variant="outlined"
-                  className="cursor-pointer"
-                  onClick={handleSignUp}>
-                  {txtButton}
-                </Link>
-              </div>
-
-              <div className="w-full mt-6">
-                <button
-                  type="submit"
-                  className="py-3 px-12 w-full text-white text-sm rounded-full shadow-md bg-green-600 active:scale-95">
-                  <span>sign in</span>
-                </button>
-              </div>
-            </form>
-            {/* <Box
-              component="form"
-              onSubmit={handleSubmit}
-              noValidate
-              sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label={userName}
-                className="bg-white rounded-md"
-                onKeyDown={handleKey}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                type="password"
-                label={passWord}
-                className="bg-white rounded-md"
-                id="password"
-                autoComplete="current-password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                size="large"
-                sx={{ mt: 3, mb: 2, p: 1.5 }}>
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link
-                    variant="outlined"
-                    className="cursor-pointer"
-                    onClick={handleForgotpassword}>
-                    {forgotPassword}
-                  </Link>
-                </Grid>
-                <Grid id item>
-                  <Link
-                    variant="outlined"
-                    className="cursor-pointer"
-                    onClick={handleSignUp}>
-                    {txtButton}
-                  </Link>
-                </Grid>
-              </Grid>
-            </Box> */}
-          </Box>
-        </Container>
-      </ThemeProvider>
       <Dialog
         open={open}
         TransitionComponent={Transition}

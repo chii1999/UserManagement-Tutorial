@@ -107,7 +107,7 @@ export default function LabTabs() {
         <TabContext value={value}>
           <form onSubmit={handleRole}>
             <TabPanel value="role">
-              <div className="border bg-white h-auto rounded-md p-4">
+              <div className="border bg-white h-auto rounded-md md:p-4 p-1">
                 <div className="flex flex-col justify-center items-center gap-4 py-4 px-2">
                   <h3 className="text-xl pb-4 w-full text-center font-semibold text-sky-500">
                     ຂໍ້ກຳນົດບົດບາດໃຫ້ກັບບັນຊີນຳໃຊ້
@@ -119,7 +119,7 @@ export default function LabTabs() {
                           sx={{ fontSize: 30 }}
                           className="text-gray-400"
                         />
-                        <span className="font-medium text-lg text-gray-500">
+                        <span className="font-medium md:text-lg text-sm text-gray-500">
                           {UserName}
                         </span>
                       </div>
@@ -128,7 +128,7 @@ export default function LabTabs() {
                           sx={{ fontSize: 30 }}
                           className="text-gray-400"
                         />
-                        <span className="font-medium text-lg text-gray-500">
+                        <span className="font-medium md:text-lg text-sm text-gray-500">
                           {Email}
                         </span>
                       </div>
@@ -137,7 +137,7 @@ export default function LabTabs() {
                           sx={{ fontSize: 30 }}
                           className="text-gray-400"
                         />
-                        <span className="font-medium text-lg text-gray-500">
+                        <span className="font-medium md:text-lg text-sm text-gray-500">
                           {Mobile}
                         </span>
                       </div>

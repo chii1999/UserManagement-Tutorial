@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import swal from "sweetalert"
 import axios from "axios"
 import "../../App.css"
@@ -11,9 +11,18 @@ export default function AddProfile() {
 
   // create profile
   const [image, setImage] = useState("")
-  // const [file, setFile] = useState("")
-  // const [isimage, setIsimage] = useState(true)
-  // const [isbutton, setIsbutton] = useState(false)
+  // useEffect(() => {
+  //   fetch("http://192.168.0.12:8000/apiprofile/" + UserId)
+  //     .then((res) => {
+  //       return res.json()
+  //     })
+  //     .then((res) => {
+  //       setImage(res.Img)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message)
+  //     })
+  // }, [UserId])
 
   const setimgfile = (e) => {
     setImage(e.target.files[0])
@@ -44,11 +53,7 @@ export default function AddProfile() {
       }
 
       const res = await axios
-        .put(
-          "http://192.168.0.12:8000/apiprofile/update/img",
-          formData,
-          config
-        )
+        .put("http://192.168.0.12:8000/apiprofile/update/img", formData, config)
         .then((res) => {
           if (res.data.status === "ok") {
             swal({
@@ -74,7 +79,12 @@ export default function AddProfile() {
     <motion.div
       animate={{ x: 0 }}
       initial={{ x: -100 }}
-      className="rounded-md w-full p-1 bg-white mt-4 mb-20">
+      className="rounded-md w-full h-auto overflow-hidden bg-white md:pt-0 pt-10 mb-20"> 
+        {/* <div className="w-full h-auto flex justify-center items-center p-4">
+          <div className="w-[16rem] h-[13rem] overflow-hidden rounded-[2rem] border shadow-md">
+            <img src={`http://192.168.0.12:8000/apiprofile/${image}`} alt="" className="w-full h-full object-cover" />
+          </div>
+        </div>  */}
       <form
         onSubmit={handleChangeImage}
         className="flex flex-col gap-4 md:w-[30rem] w-full pt-6 px-4">

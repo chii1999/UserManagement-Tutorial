@@ -542,16 +542,16 @@ export default function AddProfile() {
             </div>
           </div> */}
 
-          <div className="py-2 mt-8 px-6 w-full flex justify-end items-center gap-4">
+          <div className="py-2 mt-8 px-6 w-full md:flex justify-end items-center gap-4">
             <button
               type="submit"
-              className="py-2 px-12 text-white text-sm rounded-sm shadow-md bg-sky-600 hover:bg-sky-500 active:scale-95">
+              className="py-2 px-12 text-white md:w-auto w-full text-sm rounded-sm shadow-md bg-sky-600 hover:bg-sky-500 active:scale-95">
               <AddIcon />
               <span>ບັນທຶກຂໍ້ມູນ</span>
             </button>
             <button
               type="reset"
-              className="py-2 px-12 text-white text-sm rounded-sm shadow-md bg-rose-500 hover:bg-rose-400 active:scale-95">
+              className="py-2 px-12 text-white md:w-auto w-full md:mt-0 mt-4 text-sm rounded-sm shadow-md bg-rose-500 hover:bg-rose-400 active:scale-95">
               <RestartAltIcon />
               <span>ລ້າງຂໍ້ມູນໃໝ່</span>
             </button>

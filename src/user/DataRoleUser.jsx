@@ -40,9 +40,9 @@ function DataRoleUser() {
     <motion.div
       animate={{ x: 0 }}
       initial={{ x: -100 }}
-      className=" lg:mt-0 md:mt-20 mt-20 md:h-screen h-auto">
-      <span className="font-medium text-gray-500">
-        ບົດບາດ ແລະ ສິດທີ ຂອງພະນັກງານແຕ່ລະຄົນ
+      className=" lg:mt-0 md:mt-20 mt-20 md:h-screen bg-white rounded-md h-auto p-1">
+      <span className="font-medium text-gray-500 mt-6 px-4">
+      📶 ບົດບາດ ແລະ ສິດທີ ຂອງແຕ່ລະບັນຊີຜູ້ນຳໃຊ້
       </span>
       {/* <div className="w-full flex flex-col justify-center items-start p-2 -mb-12 text-sm   font-medium text-sky-500 gap-2">
         <span>ໝາຍເລກ 1 ແມ່ນໝາຍຄວາມວ່າ ສາມາດເຮັດໃນສິ່ງນັ້ນໄດ້</span>

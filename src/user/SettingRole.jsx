@@ -71,14 +71,14 @@ export default function SettringRole() {
       className="lg:pt-0 md:pt-14 sm:pt-14 pt-14 ">
       <TableContainer className="py-4 px-2">
         <div className="flex justify-between items-center p-2">
-          <span className="text-gray-500 font-medium">
-            ການກຳນົດບົດບາດ ແລະ ໃຫ້ສິດທີກັບ user
+          <span className="text-gray-500 font-medium md:pr-0 pr-3">
+            📶 ການກຳນົດບົດບາດ ແລະ ໃຫ້ສິດທີກັບ user
           </span>
           <input
             onChange={(e) => setQuery(e.target.value)}
             type="text"
-            placeholder="ຊອກຫາຊື່ທີຕ້ອງການ..."
-            className=" placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm outline-none text-sky-500 font-medium text-lg py-2 px-4 bg-white rounded-sm border md:w-52 w-20"
+            placeholder="ຄົ້ນຫາຂໍ້ມູນ..."
+            className=" placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm outline-none text-sky-500 font-medium text-lg py-2 px-4 bg-white rounded-sm border md:w-52 w-24"
           />
         </div>
         <Table
@@ -146,7 +146,7 @@ export default function SettringRole() {
                       {!enable && (
                         <button
                           onClick={() => UserRole(row.UserId)}
-                          className="bg-gray-500 hover:scale-110  hover:ease-in hover:duration-300 text-white py-2 px-6 w-auto rounded-sm text-sm"
+                          className="bg-gray-500 hover:scale-110  hover:ease-in hover:duration-300 text-white py-2 px-8 w-auto rounded-sm text-sm"
                           color="secondary">
                           ບົດບາດ
                         </button>
@@ -154,7 +154,7 @@ export default function SettringRole() {
                       {!enable && (
                         <button
                           onClick={() => UserPermission(row.UserId)}
-                          className="bg-indigo-500 hover:scale-110  hover:ease-in hover:duration-300 text-white py-2 px-6 w-auto rounded-sm text-sm"
+                          className="bg-indigo-500 hover:scale-110  hover:ease-in hover:duration-300 text-white py-2 px-8 w-auto rounded-sm text-sm"
                           color="secondary">
                           ສິດທີ
                         </button>

@@ -53,8 +53,14 @@ function DatatableProfile() {
       title: "ທ່ານໝັ່ນໃຈແລ້ວບໍ?",
       text: "ລາຍຊື່ໂປຣໄຟຣນີ້ຈະຖຶກລຶບອອກຈາກລະບົບ ພ້ອມກັບຂໍ້ມູນບັນຊີ!",
       icon: "warning",
-      buttons: true,
-      dangerMode: true,
+      buttons: {
+        cancel: "ບໍ່ເຫັນດີລົບ",
+        catch: {
+          text: "ເຫັນດີລົບ",
+          value: "catch",
+        },
+      },
+      dangerMode: false,
     }).then((willDelete) => {
       if (willDelete) {
         var myHeaders = new Headers()
@@ -76,8 +82,8 @@ function DatatableProfile() {
           .then((result) => {
             if (result.status === "ok") {
               swal({
-                title: "ສຳເລັດແລ້ວ",
-                text: "ຟິວນີ້ໄດ້ຖຶກລົບອອກໄປແລ້ວ!",
+                title: "ສຳເລັດ",
+                text: "ບັນຊີນີ້ຖຶກລົບອອກໄປແລ້ວ!",
                 icon: "success",
                 button: false,
               })
@@ -130,7 +136,7 @@ function DatatableProfile() {
     },
     {
       name: "ນາມສະກຸນ",
-      selector: (row) => row.LastName,
+      selector: (row) => row.LastName, 
     },
     {
       name: "ເພດ",

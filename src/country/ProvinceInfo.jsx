@@ -119,8 +119,8 @@ export default function ProvinceInfo() {
                   ຊື່ແຂວງ
                 </span>
               </TableCell>
-              <TableCell align="center">
-                <span className="pl-4 text-lg text-red-500 font-semibold">
+              <TableCell align="center" >
+                <span className="pl-4 md:block hidden text-lg text-red-500 font-semibold">
                   ຄຳຂັວນຂອງແຕ່ລະແຂວງ
                 </span>
               </TableCell>
@@ -140,7 +140,7 @@ export default function ProvinceInfo() {
                   </span>
                 </TableCell>
                 <TableCell align="center">
-                  <span className="pl-4 text-gray-500 font-medium">
+                  <span className="pl-4 md:block hidden text-gray-500 font-medium">
                     " {row.document} "
                   </span>
                   {/* <div className="flex gap-2 justify-cneter items-right w-full">

@@ -205,7 +205,7 @@ export default function PersistentDrawerLeft() {
         <MenuDropdown />
         <Box
           onClick={handleLogout}
-          className="absolute bottom-0 left-0 cursor-pointer group w-full hover:bg-gray-100 py-2 px-4 border-y gap-2 flex justify-start items-center">
+          className="absolute z-40 sticky-bottom-0 bottom-0 left-0 cursor-pointer bg-white group w-full hover:bg-gray-100 py-2 px-4 border-y gap-2 flex justify-start items-center">
           <div className="w-10 h-10 rounded-full bg-rose-100 group-hover:bg-rose-500 flex justify-center items-center">
             <LogoutSharpIcon
               className="group-hover:text-white text-gray-600"
@@ -259,7 +259,7 @@ export default function PersistentDrawerLeft() {
               </React.Fragment>
             ))}
           </div>
-          <div className=" border p-4 bg-[#f7f7f7]">
+          <div className=" border md:p-2 p-1 bg-[#f7f7f7]">
             <Routes>
               <Route index path="/Manager" element={<Dashboard />} />
               <Route path="/registeruser" element={<RegisterUser />} />
@@ -363,7 +363,7 @@ export default function PersistentDrawerLeft() {
               <MenuDropdown />
               <Box
                 onClick={handleLogout}
-                className="absolute bottom-0 left-0 cursor-pointer group w-full hover:bg-gray-100 py-2 px-4 border-y gap-2 flex justify-start items-center">
+                className="absolute z-40 sticky-bottom-0 bottom-0 left-0 cursor-pointer group bg-white w-full hover:bg-gray-100 py-2 px-4 border-y gap-2 flex justify-start items-center">
                 <div className="w-10 h-10 rounded-full bg-rose-100 group-hover:bg-rose-400 group-hover:ease-in group-hover:duration-200 flex justify-center items-center">
                   <LogoutSharpIcon
                     className="group-hover:text-white text-gray-600"
@@ -374,7 +374,7 @@ export default function PersistentDrawerLeft() {
               </Box>
             </Drawer>
 
-            <Main open={open} className="bg-[#f7f7f7] ">
+            <Main open={open} className="bg-[#f7f7f7] md:p-2 p-1">
               <DrawerHeader />
               <Routes>
                 <Route index path="/Manager" element={<Dashboard />} />

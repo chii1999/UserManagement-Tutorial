@@ -82,7 +82,7 @@ export default function Dashboard() {
   // copy Right
   function Copyright(props) {
     return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      <Typography variant="body2" className="md:text-sm text-[.35rem]" color="text.secondary" align="center" {...props}>
         {'V0.1.0 '}
         {'Copyright © '}
         <Link className="text-sky-500" href="#">
@@ -115,10 +115,10 @@ export default function Dashboard() {
             <PeopleAltIcon className="text-white" />
           </div>
           <div className="flex justify-between items-center w-full">
-            <span className="pl-8 text-gray-500 text-2xl font-medium">
+            <span className="pl-8 text-orange-500 text-2xl font-medium">
               {cuser.count}
             </span>
-            <span className="font-bold text-gray-500 text-xl">ບັນຊີ</span>
+            <span className="font-bold text-orange-500 text-xl">ບັນຊີ</span>
           </div>
           <div className="w-full group-hover:bg-gray-50 group-hover:ease-in group-hover:duration-300 h-10 bg-white absolute bottom-0 left-0 flex justify-center items-center">
             <span className="font-semibold text-sky-600 text-sm">
@@ -132,10 +132,10 @@ export default function Dashboard() {
             <AssignmentIndIcon className="text-white" />
           </div>
           <div className="flex justify-between items-center w-full">
-            <span className="pl-8 text-gray-500 text-2xl font-medium">
+            <span className="pl-8 text-orange-500 text-2xl font-medium">
             {profile.count}
             </span>
-            <span className="font-bold text-gray-500 text-xl">ທ່ານ</span>
+            <span className="font-bold text-orange-500 text-xl">ທ່ານ</span>
           </div>
           <div className="w-full group-hover:bg-gray-50 group-hover:ease-in group-hover:duration-300 h-10 bg-white absolute bottom-0 left-0 flex justify-center items-center">
             <span className="font-semibold text-sky-600 text-sm">
@@ -149,10 +149,10 @@ export default function Dashboard() {
             <AutoStoriesIcon className="text-white" />
           </div>
           <div className="flex justify-between items-center w-full">
-            <span className="pl-8 text-gray-500 text-2xl font-medium">
+            <span className="pl-8 text-orange-500 text-2xl font-medium">
             {noprofile.count}
             </span>
-            <span className="font-bold text-gray-500 text-xl">ທ່ານ</span>
+            <span className="font-bold text-orange-500 text-xl">ທ່ານ</span>
           </div>
           <div className="w-full group-hover:bg-gray-50 group-hover:ease-in group-hover:duration-300 h-10 bg-white absolute bottom-0 left-0 flex justify-center items-center">
             <span className="font-semibold text-sky-600 text-sm">
@@ -166,10 +166,10 @@ export default function Dashboard() {
             <AdminPanelSettingsIcon className="text-white" />
           </div>
           <div className="flex justify-between items-center w-full">
-            <span className="pl-8 text-gray-500 text-2xl font-medium">
+            <span className="pl-8 text-orange-500 text-2xl font-medium">
               {crole.count}
             </span>
-            <span className="font-bold text-gray-500 text-xl">ທ່ານ</span>
+            <span className="font-bold text-orange-500 text-xl">ທ່ານ</span>
           </div>
           <div className="w-full group-hover:bg-gray-50 group-hover:ease-in group-hover:duration-300 h-10 bg-white absolute bottom-0 left-0 flex justify-center items-center">
             <span className="font-semibold text-sky-600 text-sm">

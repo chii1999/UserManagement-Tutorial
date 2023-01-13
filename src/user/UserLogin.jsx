@@ -45,13 +45,13 @@ export default function UserLogin(props) {
   // Delete file user (function ການລົບຂໍ້ມູນ)
   const submitDelete = (UserId) => {
     swal({
-      title: "ທ່ານແນ່ໃຈລຶບບັນຊີນີ້ບໍ?",
-      text: "ບັນຊີທີຖຶກລຶບອອກຈະບໍ່ມີສິດດຳເນີນທຸລະກຳໃນລະບົບໄດ້",
+      title: "ທ່ານໝັ້ນໃຈແລ້ວບໍ?",
+      text: "ບັນຊີທີ່ທ່ານລົບນີ້ ຈະຖຶກລ້າງອອກຈາກລະບົບທັງໝົດ.",
       icon: "warning",
       buttons: {
-        cancel: "ບໍ່ຕ້ອງລຶບ",
+        cancel: "ບໍ່ເຫັນດີລົບ",
         catch: {
-          text: "ລຶບອອກ",
+          text: "ເຫັນດີລົບ",
           value: "catch",
         },
       },
@@ -74,7 +74,7 @@ export default function UserLogin(props) {
         fetch("http://192.168.0.12:8000/apiuser/delete/" + UserId, requestOptions)
           .then((response) => response.json())
           .then((result) => {
-            swal("ສຳເລັດແລ້ວ", "ຟິວນີ້ຖຶກລົບອອກແລ້ວ", "success")
+            swal("ສຳເລັດ", "ບັນຊີນີ້ຖຶກລ້າງອອກແລ້ວ", "success")
             UserGet()
           })
           .catch((error) => console.log("error", error))
@@ -234,7 +234,7 @@ export default function UserLogin(props) {
         <input
           onChange={(e) => setQuery(e.target.value)}
           type="text"
-          className="outline-none border rounded-sm text-gray-500 font-medium md:w-[20rem] sm:w-[16rem] py-2 px-6 placeholder:text-gray-400"
+          className="outline-none border rounded-sm text-gray-500 font-medium md:w-[20rem] w-2/5 py-2 px-6 placeholder:text-gray-400"
           placeholder="ຊອກຫາ...."
         />
       </div>

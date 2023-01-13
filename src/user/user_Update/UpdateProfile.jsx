@@ -147,7 +147,9 @@ export default function AddProfile() {
 
           <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-2 px-6">
             <div className="w-full h-auto my-2">
-              <span className="font-medium text-gray-500 -mb-2">ແກ້ໄຂຊື່:</span>
+              <span className="font-medium text-gray-500 -mb-2">
+                ຊື່ພະນັກງານ:
+              </span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <TextSnippetIcon className="text-gray-400" />
@@ -155,17 +157,14 @@ export default function AddProfile() {
                 <input
                   onChange={(e) => setFirstName(e.target.value)}
                   value={FirstName}
-                  className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none"
-                  placeholder="........."
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none"
                   type="text"
                 />
               </label>
             </div>
 
             <div className="w-full h-auto my-2">
-              <span className="font-medium text-gray-500 -mb-2">
-                ແກ້ໄຂນາມສະກຸນ:
-              </span>
+              <span className="font-medium text-gray-500 -mb-2">ນາມສະກຸນ:</span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <TextSnippetIcon className="text-gray-400" />
@@ -173,15 +172,14 @@ export default function AddProfile() {
                 <input
                   onChange={(e) => setLastName(e.target.value)}
                   value={LastName}
-                  className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none"
-                  placeholder="........."
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none"
                   type="text"
                 />
               </label>
             </div>
 
             <div className="w-full h-auto my-2">
-              <span className="font-medium text-gray-500 -mb-2">ແກ້ໄຂເພດ:</span>
+              <span className="font-medium text-gray-500 -mb-2">ເພດ:</span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <SpellcheckIcon className="text-gray-400" />
@@ -190,7 +188,7 @@ export default function AddProfile() {
                   <select
                     onChange={(e) => setGender(e.target.value)}
                     id="gender"
-                    className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none">
+                    className=" border placeholder:text-slate-400 block rounded-sm w-full pl-12 py-2 outline-none">
                     <option selected value="ຍິງ">
                       ເພດ ຍິງ
                     </option>
@@ -201,10 +199,10 @@ export default function AddProfile() {
                     onChange={(e) => setGender(e.target.value)}
                     id="gender"
                     className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none">
-                    <option value="ຍິງ">ເພດ ຍິງ</option>
-                    <option selected value="ຊາຍ">
-                      ເພດ ຊາຍ
+                    <option value="ຍິງ">
+                      ເພດ ຍິງ
                     </option>
+                    <option selected value="ຊາຍ">ເພດ ຊາຍ</option>
                   </select>
                 )}
               </label>
@@ -212,7 +210,7 @@ export default function AddProfile() {
 
             <div className="w-full h-auto my-2">
               <span className="font-medium text-gray-500 -mb-2">
-                ແກ້ໄຂວັນທີ, ເດືອນ, ປີເກີດ: {Dob}
+                ວັນທີ, ເດືອນ, ປີເກີດ: {Dob}
               </span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -221,7 +219,7 @@ export default function AddProfile() {
                 <input
                   onChange={(e) => setDob(e.target.value)}
                   value={Dob}
-                  className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none"
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none"
                   type="date"
                 />
               </label>
@@ -229,7 +227,7 @@ export default function AddProfile() {
 
             <div className="w-full h-auto my-2">
               <span className="font-medium text-gray-500 -mb-2">
-                ແກ້ໄຂແຂວງ:
+                ຂໍ້ມູນແຂວງ:
               </span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -237,8 +235,8 @@ export default function AddProfile() {
                 </span>
                 <select
                   onChange={(e) => handlecountry(e)}
-                  id="provinceid"
-                  className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none">
+                  name="ProvinceId"
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none">
                   <option value={ProvinceId}>{ProvinceName}</option>
 
                   {countrydata.map((getcountry, index) => (
@@ -252,7 +250,7 @@ export default function AddProfile() {
 
             <div className="w-full h-auto my-2">
               <span className="font-medium text-gray-500 -mb-2">
-                ແກ້ໄຂເມືອງ:
+                ຂໍ້ມູນເມືອງ:
               </span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -260,9 +258,9 @@ export default function AddProfile() {
                 </span>
                 <select
                   onChange={(e) => handleDistrict(e)}
-                  id="provinceid"
+                  name="DistrictId"
                   disabled={enable}
-                  className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none">
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none">
                   <option value={DistrictId}>{DistrictName}</option>
 
                   {statedata.map((getdistrict, index) => (
@@ -273,9 +271,9 @@ export default function AddProfile() {
                 </select>
               </label>
             </div>
-            <div className="w-full h-auto col-span-3">
+            <div className="w-full h-auto">
               <span className="font-medium  w-full text-gray-500 -mb-2 text-center">
-                ແກ້ໄຂບ້ານ:
+                ປ້ອນຊື່ບ້ານປະຈຸບັນ:
               </span>
               <label className="relative block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -284,46 +282,12 @@ export default function AddProfile() {
                 <input
                   onChange={(e) => setVillageName(e.target.value)}
                   value={VillageName}
-                  className=" border placeholder:text-slate-400 block text-sky-500 rounded-sm w-full pl-12 py-2 outline-none"
-                  placeholder="........."
+                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-10 py-2 outline-none"
                   type="text"
                 />
               </label>
             </div>
-
-            {/* <div className="w-full h-auto">
-              <span className="font-medium  w-full text-gray-500 -mb-2 text-center">
-                ຮູບພາບ:
-              </span>
-              <label className="relative block">
-                <input
-                  className=" border placeholder:text-slate-400 block rounded-sm w-full pl-2 py-2 outline-none"
-                  placeholder="........."
-                  type="file"
-                />
-              </label>
-            </div> */}
           </div>
-
-          {/* <div className="py-2 mx-6 h-auto flex justify-center gap-16 items-center rounded-md">
-            <div>
-              <label
-                htmlFor="fileName"
-                className="py-2 px-12 rounded-md shadow-md group flex flex-col justify-center items-center hover:bg-sky-500 bg-sky-400 text-white cursor-pointer">
-                <CloudUploadIcon
-                  sx={{ fontSize: 30 }}
-                  className="group-hover:text-gray-300"
-                />
-                <span>ເລືອກຮູບພາບ</span>
-              </label>
-              <input
-                type="file"
-                id="fileName"
-                accept="image/jpg, image/png, image/jpeg"
-                onChange={(e) => setImages(e.target.files)}
-              />
-            </div>
-          </div> */}
 
           <div className="py-2 px-8 text-right w-full flex justify-end items-center gap-6">
             <Link

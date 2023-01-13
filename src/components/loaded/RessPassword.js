@@ -31,17 +31,26 @@ export default function UpdateForme() {
   // update user login
   const UpdateUser = (e) => {
     e.preventDefault()
-    if (!Password) {
-      swal("ປ້ອນລະຫັດຜ່ານເກົ່າ!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+    if (!Password) { 
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "👉ກະລຸນາປ້ອນລະຫັດຜ່ານເກົ່າ!",
+        icon: "warning",
+        button: false,
       })
     } else if (!newPass) {
-      swal("ປ້ອນລະຫັດຜ່ານໃໝ່!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ສ້າງລະຫັດຜ່ານໃໝ່ກ່ອນ!",
+        icon: "warning",
+        button: false,
       })
     } else if (cnewPassword !== newPass) {
-      swal("ຢືນຢັນປ້ອນລະຫັດຜ່ານໃໝ່!", {
-        buttons: "ເຂົ້າໃຈແລ້ວ",
+      swal({
+        title: "ແຈ້ງເຕືອນ",
+        text: "ຢືນຢັນລະຫັດຜ່ານໃໝ່!",
+        icon: "warning",
+        button: false,
       })
     } else {
       const empdata = { UserName, Password, newPass }
@@ -56,9 +65,9 @@ export default function UpdateForme() {
           if (result.status === "ok") {
             swal({
               title: "ສຳເລັດແລ້ວ",
-              text: "ທ່ານໄດ້ປ່ຽນລະຫັດຜ່ານໃໝ່ແລ້ວ",
+              text: "ທ່ານໄດ້ປ່ຽນລະຫັດຜ່ານໃໝ່ໃນບັນຊີນີ້",
               icon: "success",
-              button: "ເຂົ້າໃຈແລ້ວ",
+              button: "ຂອບໃຈ",
             })
             navigate("/BannerProfile")
           } else if (result.status === "error") {
@@ -66,7 +75,7 @@ export default function UpdateForme() {
               title: "ຂໍອາໄພ!",
               text: "ລະຫັດຜ່ານເກົ່າບໍ່ຖຶກຕ້ອງ",
               icon: "error",
-              button: "ເຂົ້າໃຈແລ້ວ",
+              button: "ລອງໃໝ່ອິກຄັ້ງ",
             })
           }
         })
@@ -149,9 +158,9 @@ export default function UpdateForme() {
               variant="contained"
               color="info"
               type="submit"
-              className="active:scale-90 md:mt-0 mt-8 w-48 bg-sky-500 py-2 rounded-md text-white">
+              className="active:scale-90 w-48 bg-sky-500 py-2 rounded-md text-white">
               <UpdateIcon />
-              <span className="ml-2">ອັບແດບລະຫັດຜ່ານ</span>
+              <span className="ml-2">ຢືນຢັນ</span>
             </button>
           </div>
         </form>

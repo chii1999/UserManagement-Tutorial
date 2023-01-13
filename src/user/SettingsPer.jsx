@@ -124,8 +124,8 @@ export default function LabTabs() {
         <TabContext>
           <form className="-mt-6">
             <TabPanel>
-              <div className="border bg-white rounded-md p-4 mb-6">
-                <h3 className="text-xl flex justify-center items-start w-full my-8 font-semibold text-sky-500">
+              <div className="border bg-white rounded-md md:p-4 p-2 mb-6">
+                <h3 className="md:text-xl text-lg flex justify-center items-start w-full my-8 font-semibold text-sky-500">
                   ການກຳນົດສິດທີໃຫ້ກັບບັນຊີຜູ້ໃຊ້
                 </h3>
                 <div className="lg:flex justify-between items-start mt-4 gap-8">
@@ -135,7 +135,7 @@ export default function LabTabs() {
                         sx={{ fontSize: 25 }}
                         className="text-gray-400"
                       />
-                      <span className="font-medium text-lg text-gray-500">
+                      <span className="font-medium md:text-lg text-sm text-gray-500">
                         {UserName}
                       </span>
                     </div>
@@ -144,7 +144,7 @@ export default function LabTabs() {
                         sx={{ fontSize: 25 }}
                         className="text-gray-400"
                       />
-                      <span className="font-medium text-lg text-gray-500">
+                      <span className="font-medium md:text-lg text-sm text-gray-500">
                         {Email}
                       </span>
                     </div>
@@ -154,15 +154,15 @@ export default function LabTabs() {
                         className="text-gray-400"
                       />
                       {Rolename === "admin" ? (
-                        <span className="font-medium text-lg text-gray-500 capitalize">
+                        <span className="font-medium md:text-lg text-sm text-gray-500 capitalize">
                           {Rolename} ບົດບາດຜູ້ບໍລິຫານລະບົບ
                         </span>
                       ) : Rolename === "manager" ? (
-                        <span className="font-medium text-lg text-gray-500 capitalize">
+                        <span className="font-medium md:text-lg text-sm text-gray-500 capitalize">
                           {Rolename} ບົດບາດຜູ້ຈັດການລະບົບ
                         </span>
                       ) : (
-                        <span className="font-medium text-lg text-gray-500 capitalize">
+                        <span className="font-medium md:text-lg text-sm text-gray-500 capitalize">
                           {Rolename} ບົດບາດຜູ້ນຳໃຊ້ລະບົບ
                         </span>
                       )}
@@ -189,21 +189,21 @@ export default function LabTabs() {
 
                   <FormGroup
                     aria-label="position"
-                    className=" lg:pl-[5rem] md:pl-2 pl-2 lg:mt-0 md:mt-4 mt-4">
+                    className=" lg:pl-[5rem] md:pl-2 pl-2 lg:mt-0 md:mt-4 mt-4 w-full">
                     <div>
                       <span className="font-semibold text-gray-500">
                         🔒ຂໍ້ກຳນົດການໃຊ້ງານໃນລະບົບ
                       </span>
                     </div>
-                    <Divider />
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
+                    <Divider /> 
+                      <div className="w-full">
                         <FormControlLabel
                           onChange={(e) => setPermCreate(e.target.value)}
                           value="1"
                           control={<Checkbox color="secondary" />}
                           label={createAll}
                           labelPlacement="end"
+                          className="w-full"
                         />
                         <FormControlLabel
                           onChange={(e) => setPermRead(e.target.value)}
@@ -211,6 +211,7 @@ export default function LabTabs() {
                           control={<Checkbox color="secondary" />}
                           label={makeData}
                           labelPlacement="end"
+                          className="w-full"
                         />
                         <FormControlLabel
                           onChange={(e) => setPermUpdate(e.target.value)}
@@ -218,6 +219,7 @@ export default function LabTabs() {
                           control={<Checkbox color="secondary" />}
                           label={updateData}
                           labelPlacement="end"
+                          className="w-full"
                         />
                         <FormControlLabel
                           onChange={(e) => setPermDelete(e.target.value)}
@@ -225,25 +227,25 @@ export default function LabTabs() {
                           control={<Checkbox color="secondary" />}
                           label={deleteData}
                           labelPlacement="end"
+                          className="w-full"
                         />
-                      </div>
-                    </div>
+                      </div> 
                   </FormGroup>
                 </div>
 
                 <div className=" lg:-mt-10 md:mt-4 mt-6 flex lg:justify-end md:justify-between justify-between items-center gap-4">
                   <button
                     onClick={() => resetData()}
-                    className="py-3 px-6 active:scale-95 text-white bg-rose-500 font-medium rounded-md flex gap-4 justify-center items0-center">
+                    className="py-3 md:px-6 px-2 active:scale-95 text-white bg-rose-500 font-medium rounded-md flex md:gap-4 gap-2 justify-center items0-center">
                     <RestartAltIcon />
-                    <span>ລ້າງຂໍ້ມູນໃໝ່</span>
+                    <span className="md:text-md text-sm">ລ້າງຂໍ້ມູນໃໝ່</span>
                   </button>
                   <button
                     onClick={handlePermission}
                     type="submit"
-                    className="py-3 px-6 active:scale-95 text-white bg-sky-500 font-medium rounded-md flex gap-4 justify-center items0-center">
+                    className="py-3 px-6 active:scale-95 text-white bg-sky-500 font-medium rounded-md flex md:gap-4 gap-2 justify-center items0-center">
                     <DoneAllIcon />
-                    <span>ບັນທຶກ</span>
+                    <span className="md:text-md text-sm">ບັນທຶກ</span>
                   </button>
                 </div>
               </div>
