@@ -14,7 +14,7 @@ const UpdateDistrict = () => {
 
   // get data
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apidistrict/" + DistrictId)
+    fetch("http://192.168.0.236:8000/apidistrict/" + DistrictId)
       .then((res) => {
         return res.json()
       })
@@ -33,7 +33,7 @@ const UpdateDistrict = () => {
     e.preventDefault()
     const empdata = { DistrictId, ProvinceId, DistrictName }
 
-    fetch("http://192.168.0.12:8000/apidistrict/update", {
+    fetch("http://192.168.0.236:8000/apidistrict/update", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(empdata),
@@ -57,7 +57,7 @@ const UpdateDistrict = () => {
   }, [])
 
   const UserGet = () => {
-    fetch("http://192.168.0.12:8000/apiprovince")
+    fetch("http://192.168.0.236:8000/apiprovince")
       .then((res) => res.json())
       .then((result) => {
         setProName(result)

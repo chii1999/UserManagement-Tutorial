@@ -21,7 +21,7 @@ export default function LabTabs() {
   const { UserId } = useParams()
 
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apiroles/all/" + UserId)
+    fetch("http://192.168.0.236:8000/apiroles/all/" + UserId)
       .then((res) => {
         return res.json()
       })
@@ -55,7 +55,7 @@ export default function LabTabs() {
       const getData = { UserId, RoleId }
 
       axios
-        .put("http://192.168.0.12:8000/apihr/update", getData)
+        .put("http://192.168.0.236:8000/apihr/update", getData)
         .then((res) => {
           if (res.data.status === "ok") {
             swal({
@@ -86,7 +86,7 @@ export default function LabTabs() {
   }, [])
 
   const getRole = async () => {
-    const reqdata = await fetch("http://192.168.0.12:8000/apiroles")
+    const reqdata = await fetch("http://192.168.0.236:8000/apiroles")
     const resdata = await reqdata.json()
     setRoles(resdata)
   }

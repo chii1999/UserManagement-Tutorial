@@ -16,7 +16,7 @@ export default function EditProfile() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apiprofile/" + ProfileId)
+    fetch("http://192.168.0.236:8000/apiprofile/" + ProfileId)
       .then((res) => {
         return res.json()
       })
@@ -36,7 +36,7 @@ export default function EditProfile() {
     e.preventDefault()
       const empdata = { ProfileId, FirstName, LastName, Gender, Dob }
 
-    fetch("http://192.168.0.12:8000/apiprofile/editname", {
+    fetch("http://192.168.0.236:8000/apiprofile/editname", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(empdata),

@@ -21,7 +21,7 @@ export default function FormUse() {
   const [Cpassword, setCpassword] = useState("")
 
   useEffect(() => {
-    fetch(`http://192.168.0.12:8000/apiuser/${UserId}`)
+    fetch(`http://192.168.0.236:8000/apiuser/${UserId}`)
       .then((res) => {
         return res.json()
       })  
@@ -50,7 +50,7 @@ export default function FormUse() {
     } else {
       const empdata = { UserId, UserName, Email, Mobile, Password }
 
-      fetch("http://192.168.0.12:8000/apiuser/update/", {
+      fetch("http://192.168.0.236:8000/apiuser/update/", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(empdata),

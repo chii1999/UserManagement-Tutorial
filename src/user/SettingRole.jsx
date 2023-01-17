@@ -19,7 +19,7 @@ export default function SettringRole() {
   }, [])
 
   const UserGet = () => {
-    fetch("http://192.168.0.12:8000/apiuser")
+    fetch("http://192.168.0.236:8000/apiuser")
       .then((res) => res.json())
       .then((result) => {
         setItems(result)
@@ -46,7 +46,7 @@ export default function SettringRole() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setUser(result.userlogin)

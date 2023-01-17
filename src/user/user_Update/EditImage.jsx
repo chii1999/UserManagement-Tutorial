@@ -12,7 +12,7 @@ export default function AddProfile() {
   // create profile
   const [image, setImage] = useState("")
   // useEffect(() => {
-  //   fetch("http://192.168.0.12:8000/apiprofile/" + UserId)
+  //   fetch("http://192.168.0.236:8000/apiprofile/" + UserId)
   //     .then((res) => {
   //       return res.json()
   //     })
@@ -53,7 +53,7 @@ export default function AddProfile() {
       }
 
       const res = await axios
-        .put("http://192.168.0.12:8000/apiprofile/update/img", formData, config)
+        .put("http://192.168.0.236:8000/apiprofile/update/img", formData, config)
         .then((res) => {
           if (res.data.status === "ok") {
             swal({
@@ -82,7 +82,7 @@ export default function AddProfile() {
       className="rounded-md w-full h-auto overflow-hidden bg-white md:pt-0 pt-10 mb-20"> 
         {/* <div className="w-full h-auto flex justify-center items-center p-4">
           <div className="w-[16rem] h-[13rem] overflow-hidden rounded-[2rem] border shadow-md">
-            <img src={`http://192.168.0.12:8000/apiprofile/${image}`} alt="" className="w-full h-full object-cover" />
+            <img src={`http://192.168.0.236:8000/apiprofile/${image}`} alt="" className="w-full h-full object-cover" />
           </div>
         </div>  */}
       <form

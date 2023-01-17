@@ -30,7 +30,7 @@ export default function UserLogin(props) {
   }, [])
 
   const UserGet = () => {
-    fetch("http://192.168.0.12:8000/apiuser")
+    fetch("http://192.168.0.236:8000/apiuser")
       .then((res) => res.json())
       .then((result) => {
         setItems(result)
@@ -71,7 +71,7 @@ export default function UserLogin(props) {
           redirect: "follow",
         }
 
-        fetch("http://192.168.0.12:8000/apiuser/delete/" + UserId, requestOptions)
+        fetch("http://192.168.0.236:8000/apiuser/delete/" + UserId, requestOptions)
           .then((response) => response.json())
           .then((result) => {
             swal("ສຳເລັດ", "ບັນຊີນີ້ຖຶກລ້າງອອກແລ້ວ", "success")
@@ -109,7 +109,7 @@ export default function UserLogin(props) {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setUser(result.userlogin)

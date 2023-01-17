@@ -12,7 +12,7 @@ export default function RoleName() {
   //   e.preventDefault();
   //   const empdata ={RoleName};
 
-  //   fetch("http://192.168.0.12:8000/apiroles/create", {
+  //   fetch("http://192.168.0.236:8000/apiroles/create", {
   //     method: "POST",
   //     headers: {'Content-Type':'application/json'},
   //     body:JSON.stringify(empdata)
@@ -40,7 +40,7 @@ export default function RoleName() {
   }, [])
 
   const UserGet = () => {
-    fetch("http://192.168.0.12:8000/apiroles")
+    fetch("http://192.168.0.236:8000/apiroles")
       .then((res) => res.json())
       .then((result) => {
         setItems(result)

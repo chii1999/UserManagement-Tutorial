@@ -12,10 +12,9 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight"
 import SecurityIcon from "@mui/icons-material/Security"
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount"
 import VpnLockIcon from "@mui/icons-material/VpnLock"
-import { useNavigate } from "react-router-dom"
-import { on } from "stream"
+import { useNavigate } from "react-router-dom" 
 
-export default function NestedList() {
+export default function MenuDropdown() {
   const [open, setOpen] = React.useState(false)
   const [openrole, setOpenrole] = React.useState(false)
   const [opencountry, setOpencountry] = React.useState(false)
@@ -33,12 +32,12 @@ export default function NestedList() {
   const history = useNavigate()
   const Manager = () => {
     history("/Manager")
-  }
+  } 
   const UserLogin = () => {
     history("/UserLogin")
   }
   const settingrole = () => {
-    history("/settingrole")
+    history("/settingrole") 
   }
   const dataroleuser = () => {
     history("/dataroleuser")
@@ -71,7 +70,7 @@ export default function NestedList() {
         <NavLink className=" font-medium text-gray-500">
           ໜ້າທຳອິດ ຂອງແອບ
         </NavLink>
-      </ListItemButton>
+      </ListItemButton> 
       <ListItemButton onClick={UserLogin} className="group">
         <ListItemIcon>
           <PortraitIcon className=" text-sky-400 group-hover:scale-110" />

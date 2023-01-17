@@ -79,7 +79,7 @@ export default function FormUse() {
         redirect: "follow",
       }
 
-      fetch("http://192.168.0.12:8000/apiuser/create", requestOptions)
+      fetch("http://192.168.0.236:8000/apiuser/create", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           if (result.status === "ok") {

@@ -10,7 +10,7 @@ const ProvinceUpdate = () => {
 
   // get data
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apiprovince/" + ProvinceId)
+    fetch("http://192.168.0.236:8000/apiprovince/" + ProvinceId)
       .then((res) => {
         return res.json()
       })
@@ -29,7 +29,7 @@ const ProvinceUpdate = () => {
     e.preventDefault()
     const empdata = { ProvinceId, ProvinceName, document }
 
-    fetch("http://192.168.0.12:8000/apiprovince/update/", {
+    fetch("http://192.168.0.236:8000/apiprovince/update/", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(empdata),

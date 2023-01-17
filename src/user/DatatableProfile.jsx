@@ -27,7 +27,7 @@ function DatatableProfile() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setUser(result.userlogin)
@@ -77,7 +77,7 @@ function DatatableProfile() {
           redirect: "follow",
         }
 
-        fetch("http://192.168.0.12:8000/apiprofile/delete/" + ProfileId, requestOptions)
+        fetch("http://192.168.0.236:8000/apiprofile/delete/" + ProfileId, requestOptions)
           .then((response) => response.json())
           .then((result) => {
             if (result.status === "ok") {
@@ -101,7 +101,7 @@ function DatatableProfile() {
 
   const getProfile = async () => {
     try {
-      const response = await axios.get("http://192.168.0.12:8000/apiprofile")
+      const response = await axios.get("http://192.168.0.236:8000/apiprofile")
       setProfiledata(response.data)
       setFilterprofile(response.data)
     } catch (error) {
@@ -121,7 +121,7 @@ function DatatableProfile() {
       selector: (row) => (
         <span className="p-[.4rem]">
           <img
-            src={`http://192.168.0.12:8000/apiprofile/${row.Img}`}
+            src={`http://192.168.0.236:8000/apiprofile/${row.Img}`}
             alt="pic"
             className="w-14 h-14 border shadow-md rounded-xl object-cover"
           />

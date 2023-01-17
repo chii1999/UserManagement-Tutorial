@@ -16,7 +16,7 @@ function DataRoleUser() {
   const getProfile = async () => {
     try {
       const response = await axios.get(
-        "http://192.168.0.12:8000/apiroles/select/perm"
+        "http://192.168.0.236:8000/apiroles/select/perm"
       )
       setRoledata(response.data)
       setNonedata(true)
@@ -120,15 +120,15 @@ function DataRoleUser() {
                     <td className={classTbody}> {getData.Email} </td>
                     <td className={classTbody}>
                       {getData.RoleName === "admin" ? (
-                        <span className="py-1 px-4 rounded-sm bg-red-400 text-white">
+                        <span className="py-1 px-4 rounded-md bg-red-400 text-white">
                           ຜູ້ບໍລິຫານ
                         </span>
                       ) : getData.RoleName === "manager" ? ( 
-                        <span className="py-1 px-4 rounded-sm bg-sky-400 text-white">
+                        <span className="py-1 px-4 rounded-sm bg-sky-400 text-gray-600">
                           ຜູ້ຈັດການ
                         </span>
                        ) : (
-                        <span className="py-1 px-4 rounded-sm bg-green-300">
+                        <span className="py-1 px-4 rounded-sm bg-yellow-400">
                           ຜູ້ນຳໃຊ້
                         </span>
                       )}

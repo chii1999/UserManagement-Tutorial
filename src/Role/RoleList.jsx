@@ -19,7 +19,7 @@ export default function RoleList() {
   }, [])
 
   const UserGet = () => {
-    fetch("http://192.168.0.12:8000/apiroles")
+    fetch("http://192.168.0.236:8000/apiroles")
       .then((res) => res.json())
       .then((result) => {
         setItems(result)

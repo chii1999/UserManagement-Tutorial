@@ -61,7 +61,7 @@ function SignUp() {
         redirect: "follow",
       }
 
-      fetch("http://192.168.0.12:8000/apiuser/changepass", requestOptions)
+      fetch("http://192.168.0.236:8000/apiuser/changepass", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           if (result.status === "ok") {

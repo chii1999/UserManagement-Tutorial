@@ -21,7 +21,7 @@ export default function ModelUpdate() {
     const [LastName, setLastName] = useState("")
 
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apiprofile/" + ProfileId)
+    fetch("http://192.168.0.236:8000/apiprofile/" + ProfileId)
       .then((res) => {
         return res.json()
       })
@@ -41,7 +41,7 @@ export default function ModelUpdate() {
     }, [])
   
     const UserGet = () => {
-      fetch("http://192.168.0.12:8000/apiuser")
+      fetch("http://192.168.0.236:8000/apiuser")
         .then((res) => res.json())
         .then((result) => {
           setItems(result)
@@ -64,7 +64,7 @@ export default function ModelUpdate() {
   const Agree = <span className="text-sky-500 font-medium">👌ເຫັນດີແລ້ວ</span>
 
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apiprofile/" + ProfileId)
+    fetch("http://192.168.0.236:8000/apiprofile/" + ProfileId)
       .then((res) => {
         return res.json()
       })

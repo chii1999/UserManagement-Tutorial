@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 function HistoryHome() {
   const [items, setItems] = useState([])
   const getUserLogin = async () => {
-    const reqdata = await fetch("http://192.168.0.12:8000/apilogin/select")
+    const reqdata = await fetch("http://192.168.0.236:8000/apilogin/select")
     const resdata = await reqdata.json()
     setItems(resdata)
     // console.log(resdata)

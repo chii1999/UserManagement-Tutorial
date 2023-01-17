@@ -39,7 +39,7 @@ export default function AddProfile() {
   }, [])
 
   const getcountry = async () => {
-    const reqdata = await fetch("http://192.168.0.12:8000/apiprovince")
+    const reqdata = await fetch("http://192.168.0.236:8000/apiprovince")
     const resdata = await reqdata.json()
     setCountrydata(resdata)
   }
@@ -49,7 +49,7 @@ export default function AddProfile() {
     setProvinceId(ProvinceId)
     if (ProvinceId !== "") {
       const reqstatedata = await fetch(
-        "http://192.168.0.12:8000/apiprofile/getdistrict/" + ProvinceId
+        "http://192.168.0.236:8000/apiprofile/getdistrict/" + ProvinceId
       )
       const resstatedata = await reqstatedata.json()
       setStetedata(resstatedata)
@@ -225,7 +225,7 @@ export default function AddProfile() {
       }
 
       const res = await axios
-        .post("http://192.168.0.12:8000/apiuser/create", formData, config)
+        .post("http://192.168.0.236:8000/apiuser/create", formData, config)
         .then((res) => {
           if (res.data.status === "ok") {
             swal({

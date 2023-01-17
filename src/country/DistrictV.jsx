@@ -18,7 +18,7 @@ export default function DistrictV() {
   }, [])
 
   const UserGet = () => {
-    fetch("http://192.168.0.12:8000/apidistrict")
+    fetch("http://192.168.0.236:8000/apidistrict")
       .then((res) => res.json())
       .then((result) => {
         setItems(result)
@@ -54,7 +54,7 @@ export default function DistrictV() {
         }
 
         fetch(
-          "http://192.168.0.12:8000/apidistrict/delete/" + DistrictId,
+          "http://192.168.0.236:8000/apidistrict/delete/" + DistrictId,
           requestOptions
         )
           .then((response) => response.json())
@@ -81,7 +81,7 @@ export default function DistrictV() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setUser(result.userlogin)

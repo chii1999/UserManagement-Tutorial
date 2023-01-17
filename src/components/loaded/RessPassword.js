@@ -55,7 +55,7 @@ export default function UpdateForme() {
     } else {
       const empdata = { UserName, Password, newPass }
 
-      fetch("http://192.168.0.12:8000/apiuser/hack", {
+      fetch("http://192.168.0.236:8000/apiuser/hack", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(empdata),

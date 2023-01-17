@@ -1,8 +1,8 @@
-import  React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Box from "@mui/material/Box"
 import Menu from "@mui/material/Menu"
 import IconButton from "@mui/material/IconButton"
-import Tooltip from "@mui/material/Tooltip" 
+import Tooltip from "@mui/material/Tooltip"
 import NotifiData from "./loaded/NotifiData"
 import Badge from "@mui/material/Badge"
 import Stack from "@mui/material/Stack"
@@ -45,7 +45,6 @@ export default function Notification() {
   //     .catch((error) => console.log("error", error))
   // }, [user])
 
-  
   const [profile, setProfile] = useState("")
 
   useEffect(() => {
@@ -55,12 +54,13 @@ export default function Notification() {
   const getProfile = async () => {
     // count profile
     try {
-      const rescoutProfile = await axios.get("http://192.168.0.12:8000/countuser")
+      const rescoutProfile = await axios.get(
+        "http://192.168.0.236:8000/countuser"
+      )
       setProfile(rescoutProfile.data)
     } catch (error) {
       console.log(error)
     }
-
   }
 
   return (
@@ -110,7 +110,10 @@ export default function Notification() {
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-        <div className="md:w-[28rem] w-full h-[27rem] p-1 overflow-hidden">
+        <div className="md:w-[28rem] w-full h-[20rem] overflow-hidden overflow-y-auto">
+          <h2 className="text-md py-3 px-2 bg-white sticky top-0 z-50 -left-2 w-auto h-auto shadow-sm text-gray-500 font-medium m-2">
+            ບັນຊີສ້າງຂື້ນໃໝ່ New Accounts
+          </h2>
           <NotifiData />
         </div>
       </Menu>

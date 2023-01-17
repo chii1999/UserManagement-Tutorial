@@ -16,7 +16,7 @@ export default function Province() {
   //   e.preventDefault();
   //   const empdata ={ProvinceName, document};
 
-  //   fetch("http://192.168.0.12:8000/apiprovince/create", {
+  //   fetch("http://192.168.0.236:8000/apiprovince/create", {
   //     method: "POST",
   //     headers: {'Content-Type':'application/json'},
   //     body:JSON.stringify(empdata)

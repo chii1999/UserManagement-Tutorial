@@ -28,27 +28,27 @@ export default function Dashboard() {
   const getProfile = async () => {
     // count profile
     try {
-      const rescoutProfile = await axios.get("http://192.168.0.12:8000/countprofile")
+      const rescoutProfile = await axios.get("http://192.168.0.236:8000/countprofile")
       setProfile(rescoutProfile.data)
     } catch (error) {
       console.log(error)
     }
     // count user
     try {
-      const rescoutUser = await axios.get("http://192.168.0.12:8000/countuser")
+      const rescoutUser = await axios.get("http://192.168.0.236:8000/countuser")
       setCuser(rescoutUser.data)
     } catch (error) {
       console.log(error)
     }
     try {
-      const rescoutNoprofile = await axios.get("http://192.168.0.12:8000/countnoprofile")
+      const rescoutNoprofile = await axios.get("http://192.168.0.236:8000/countnoprofile")
       setNoprofile(rescoutNoprofile.data)
     } catch (error) {
       console.log(error)
     }
     // count user role where status = user
     try {
-      const rescoutRole = await axios.get("http://192.168.0.12:8000/countuserhr")
+      const rescoutRole = await axios.get("http://192.168.0.236:8000/countuserhr")
       setCrole(rescoutRole.data)
     } catch (error) {
       console.log(error)
@@ -68,7 +68,7 @@ export default function Dashboard() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if (result.status === "ok") {
@@ -182,47 +182,6 @@ export default function Dashboard() {
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4 mt-8">
         <div className="h-[23rem] relative overflow-hidden w-full shadow-sm">
           <Calendar onChange={onChange} value={value} className="w-full leading-loose text-sm p-4 sm:w-full text-center h-full border-noner rounded-md" />
-          {/* <div className="absolute top-0 left-0 capitalize p-2 w-full bg-sky-400 text-center text-white">
-            Status: {user.RoleName}
-          </div>
-          <div 
-            className="absolute top-14 left-0 w-full flex justify-center items-center">
-          <Avatar
-            alt={user.UserName}
-            src="/m"
-            sx={{ width: 120, height: 120 }}
-          />
-          </div>
-          <div className="absolute bottom-0 left-0 w-full flex flex-col">
-            <div className="flex justify-start items-center pl-3 py-2 border-y">
-              <div className="p-2 w-10 flex justify-center items-center">
-                <PersonIcon className="text-gray-400 text-sm" fontSize="28px" />
-              </div>
-              <div>
-                <span className="pl-2 text-sm font-normal capitalize">
-                  {user.UserName}
-                </span>
-              </div>
-            </div>
-            <div className="flex justify-start items-center pl-3 py-2 border-b">
-              <div className="p-2 w-10 flex justify-center items-center">
-                <EmailIcon className="text-gray-400 text-sm" fontSize="28px" />
-              </div>
-              <div>
-                <span className="pl-2 text-sm font-normal normal-case">
-                  {user.Email}
-                </span>
-              </div>
-            </div>
-            <div className="flex justify-start items-center pl-3 py-2">
-              <div className="p-2 w-10 flex justify-center items-center">
-                <CallIcon className="text-gray-400 text-sm" fontSize="28px" />
-              </div>
-              <div>
-                <span className="pl-2 text-sm font-normal">{user.Mobile}</span>
-              </div>
-            </div>
-          </div> */}
         </div>
         <div className="col-span-2 h-auto rounded-md shadow-sm border  p-3">
           <ChartData />

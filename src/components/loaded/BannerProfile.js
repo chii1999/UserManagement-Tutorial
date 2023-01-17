@@ -30,7 +30,7 @@ function BannerProfile() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if (result.status === "ok") {
@@ -67,7 +67,7 @@ function BannerProfile() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setUser(result.userlogin)
@@ -88,11 +88,10 @@ function BannerProfile() {
   }
 
   const animateForm = { opacity: 0, y: -40 }
-  const animateTo = { opacity: 1, y: 0 }
-  const [selectedId, setSelectedId] = useState(null)
+  const animateTo = { opacity: 1, y: 0 } 
 
   return (
-    <div className="w-full lg:pt-0 md:pt-14 sm:pt-14 mb-10 pt-14 flex flex-col justify-between items-start gap-4">
+    <div className="w-full lg:pt-4 md:pt-14 sm:pt-14 my-8 pt-14 flex flex-col justify-between items-start gap-4 bg-white">
       <div className="md:flex justify-between items-start gap-4 w-full">
         <div className="md:w-[25rem] w-full h-auto border rounded-md bg-white flex flex-col justify-start items-center gap-2 p-3">
           <div className="flex flex-col justify-center items-center gap-2 relative">
@@ -106,9 +105,10 @@ function BannerProfile() {
             </button>
             <Avatar
               alt={user.UserName}
-              src={`http://192.168.0.12:8000/apilogin/${user.Img}`}
+              src={`http://192.168.0.236:8000/apilogin/${user.Img}`}
               sx={{ width: 130, height: 130 }}
-              className="shadow-lg"
+              className="shadow-lg border-t border-t-sky-500"
+
             />
             {/* <img src="" alt="" /> */}
             <h2 className="text-lg flex gap-2 justify-center items-center font-bold text-gray-600 w-full">

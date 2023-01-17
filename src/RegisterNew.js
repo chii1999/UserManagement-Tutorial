@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "./App.css"
 import SpellcheckIcon from "@mui/icons-material/Spellcheck"
-import Divider from "@mui/material/Divider"
-import Button from "@mui/material/Button"
+import Divider from "@mui/material/Divider" 
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"
 import AddIcon from "@mui/icons-material/Add"
 import TextSnippetIcon from "@mui/icons-material/TextSnippet"
@@ -13,7 +12,9 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"
 import CloudUploadIcon from "@mui/icons-material/CloudUpload"
 import swal from "sweetalert"
 import axios from "axios"
-import { Avatar } from "@mui/material"
+import { Avatar, Link } from "@mui/material"
+import Login from "./Login"
+import { motion } from "framer-motion"
 
 export default function AddProfile() {
   const [UserName, setUserName] = useState("")
@@ -40,7 +41,7 @@ export default function AddProfile() {
   }, [])
 
   const getcountry = async () => {
-    const reqdata = await fetch("http://192.168.0.12:8000/apiprovince")
+    const reqdata = await fetch("http://192.168.0.236:8000/apiprovince")
     const resdata = await reqdata.json()
     setCountrydata(resdata)
   }
@@ -50,7 +51,7 @@ export default function AddProfile() {
     setProvinceId(ProvinceId)
     if (ProvinceId !== "") {
       const reqstatedata = await fetch(
-        "http://192.168.0.12:8000/apiprofile/getdistrict/" + ProvinceId
+        "http://192.168.0.236:8000/apiprofile/getdistrict/" + ProvinceId
       )
       const resstatedata = await reqstatedata.json()
       setStetedata(resstatedata)
@@ -226,7 +227,7 @@ export default function AddProfile() {
       }
 
       const res = await axios
-        .post("http://192.168.0.12:8000/apiuser/create", formData, config)
+        .post("http://192.168.0.236:8000/apiuser/create", formData, config)
         .then((res) => {
           if (res.data.status === "ok") {
             swal({
@@ -254,10 +255,23 @@ export default function AddProfile() {
     }
   }
 
+  
+  const [open, setOpen] = React.useState(false)
+  const [openregister, setOpenRegister] = React.useState(false)
+  const handleSignUp = () => {
+    setOpen(false)
+    setOpenRegister(true)
+  }
+
   return (
-    <div className="w-full">
-      <div className="rounded-md bg-white mt-6">
-        <form onSubmit={addUserData} className="flex flex-col gap-4 pt-6">
+    <> 
+    {!open && (
+      <motion.div
+      animate={{ x : 0 }}
+      initial={{ x: -120 }}
+      className="w-full h-full">
+      <div className="rounded-sm bg-white">
+        <form onSubmit={addUserData} className="flex flex-col gap-4 p-2">
           <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4 ">
             <div className="my-2 mx-2 items-center">
               <span className="font-medium text-gray-500 -mb-2">
@@ -529,18 +543,18 @@ export default function AddProfile() {
             </div>
           </div>
 
-          <div className="py-2 px-8 mt-10 text-right w-full flex justify-center items-center gap-2">
-            <Button
-              size="large"
-              variant="contained"
-              type="submit"
-              className="active:scale-90 w-full">
+          <div className="py-2 px-8 mt-10 text-right w-full flex justify-center items-end gap-2">
+            <button
+              type="submint"
+              className="py-3 px-6 w-full active:scale-95 rounded-md bg-sky-500 text-white flex justify-center items-center gap-4 font-medium">
               <AddIcon />
               <span>ລົງທະບຽນບັນຊີ</span>
-            </Button>
+            </button>
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
+    )}
+    </>
   )
 }

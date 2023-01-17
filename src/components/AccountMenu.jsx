@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Box from "@mui/material/Box"
 import Avatar from "@mui/material/Avatar"
 import Menu from "@mui/material/Menu"
@@ -12,6 +12,8 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1"
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew"
 import DescriptionIcon from "@mui/icons-material/Description"
 import MmsIcon from "@mui/icons-material/Mms"
+import SecurityIcon from "@mui/icons-material/Security"
+import PortraitIcon from "@mui/icons-material/Portrait"
 import swal from "sweetalert"
 import AddModeratorIcon from "@mui/icons-material/AddModerator"
 import { motion } from "framer-motion"
@@ -49,14 +51,15 @@ export default function AccountMenu() {
           buttons: false,
         })
         navigate("/login")
-      } else {
-        navigate("/manager")
       }
     })
   }
 
   const goManager = () => {
     navigate("/BannerProfile")
+  }
+   const UserLogin = () => {
+    navigate("/UserLogin")
   }
   const registeruser = () => {
     navigate("/registeruser")
@@ -67,6 +70,9 @@ export default function AccountMenu() {
   const rolename = () => {
     navigate("/rolename")
   }
+  const dataroleuser = () => {
+        navigate("/dataroleuser")
+      }
 
   // Seculity token
   const [manager, setManger] = useState(true)
@@ -83,7 +89,7 @@ export default function AccountMenu() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken/", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setUser(result.userlogin)
@@ -102,7 +108,7 @@ export default function AccountMenu() {
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="Account settings">
+        <Tooltip>
           <IconButton
             onClick={handleClick}
             size="small"
@@ -111,7 +117,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}>
             <Avatar
-              src={`http://192.168.0.12:8000/apilogin/${user.Img}`}
+              src={`http://192.168.0.236:8000/apilogin/${user.Img}`}
               sx={{ bgcolor: "#3f51b5" }}></Avatar>
           </IconButton>
         </Tooltip>
@@ -147,7 +153,7 @@ export default function AccountMenu() {
         <div className="w-[15rem]">
           <MenuItem onClick={goManager} className="flex gap-4 cursor-default">
             <Avatar
-              src={`http://192.168.0.12:8000/apilogin/${user.Img}`}
+              src={`http://192.168.0.236:8000/apilogin/${user.Img}`}
               alt={user.UserName}
               sx={{ width: 53, height: 53 }}
             />
@@ -169,12 +175,38 @@ export default function AccountMenu() {
               <span className="font-medium text-gray-500">ໂປຣໄຟຣຂອງຂ້ອຍ</span>
             </motion.NavLink>
           </MenuItem>
+          <MenuItem>
+            <motion.NavLink
+              initial={animateForm}
+              animate={animateTo}
+              transition={{ delay: 0.05 }}
+              onClick={UserLogin}
+              className="flex justify-center items-center">
+              <ListItemIcon>
+                <PortraitIcon fontSize="small" className="text-sky-400" />
+              </ListItemIcon>
+              <span className="font-medium text-gray-500">ຂໍ້ມູນບັນຊີ</span>
+            </motion.NavLink>
+          </MenuItem>
+          <MenuItem>
+            <motion.NavLink
+              initial={animateForm}
+              animate={animateTo}
+              transition={{ delay: 0.1 }}
+              onClick={dataroleuser}
+              className="flex justify-center items-center">
+              <ListItemIcon>
+                <SecurityIcon fontSize="small" className="text-sky-400" />
+              </ListItemIcon>
+              <span className="font-medium text-gray-500">ບົດບາດ, ສິດທີ</span>
+            </motion.NavLink>
+          </MenuItem>
           {!admin && (
             <MenuItem>
               <motion.NavLink
                 initial={animateForm}
                 animate={animateTo}
-                transition={{ delay: 0.05 }}
+                transition={{ delay: 0.2 }}
                 onClick={registeruser}
                 className="flex justify-center items-center">
                 <ListItemIcon>
@@ -192,7 +224,7 @@ export default function AccountMenu() {
               <motion.NavLink
                 initial={animateForm}
                 animate={animateTo}
-                transition={{ delay: 0.1 }}
+                transition={{ delay: 0.3 }}
                 onClick={registeruser}
                 className="flex justify-center items-center">
                 <ListItemIcon>
@@ -209,7 +241,7 @@ export default function AccountMenu() {
             <motion.NavLink
               initial={animateForm}
               animate={animateTo}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.4 }}
               onClick={historyhome}
               className="flex justify-center items-center">
               <ListItemIcon>
@@ -223,7 +255,7 @@ export default function AccountMenu() {
               <motion.NavLink
                 initial={animateForm}
                 animate={animateTo}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.5 }}
                 onClick={rolename}
                 className="flex justify-center items-center">
                 <ListItemIcon>
@@ -238,7 +270,7 @@ export default function AccountMenu() {
               <motion.NavLink
                 initial={animateForm}
                 animate={animateTo}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.6 }}
                 to="../signin"
                 className="flex justify-cneter items-center">
                 <ListItemIcon>

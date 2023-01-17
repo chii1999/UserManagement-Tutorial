@@ -31,7 +31,7 @@ export default function AddProfile() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if (result.status === "ok") {
@@ -54,7 +54,7 @@ export default function AddProfile() {
   }, [])
 
   const getcountry = async () => {
-    const reqdata = await fetch("http://192.168.0.12:8000/apiprovince")
+    const reqdata = await fetch("http://192.168.0.236:8000/apiprovince")
     const resdata = await reqdata.json()
     setCountrydata(resdata)
   }
@@ -64,7 +64,7 @@ export default function AddProfile() {
     setProvinceId(ProvinceId)
     if (ProvinceId !== "") {
       const reqstatedata = await fetch(
-        "http://192.168.0.12:8000/apiprofile/getdistrict/" + ProvinceId
+        "http://192.168.0.236:8000/apiprofile/getdistrict/" + ProvinceId
       )
       const resstatedata = await reqstatedata.json()
       setStetedata(resstatedata)
@@ -138,7 +138,7 @@ export default function AddProfile() {
         redirect: "follow",
       }
 
-      fetch("http://192.168.0.12:8000/apiprofile/create", requestOptions)
+      fetch("http://192.168.0.236:8000/apiprofile/create", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           if (result.status === "ok") {

@@ -46,7 +46,7 @@ function DataDistrict() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setUser(result.userlogin)
@@ -62,7 +62,7 @@ function DataDistrict() {
 
   const getProfile = async () => {
     try {
-      const response = await axios.get("http://192.168.0.12:8000/apidistrict")
+      const response = await axios.get("http://192.168.0.236:8000/apidistrict")
       setProfiledata(response.data)
       setFilterprofile(response.data)
     } catch (error) {
@@ -152,7 +152,7 @@ function DataDistrict() {
         }
 
         fetch(
-          "http://192.168.0.12:8000/apiprofile/delete/" + ProfileId,
+          "http://192.168.0.236:8000/apiprofile/delete/" + ProfileId,
           requestOptions
         )
           .then((response) => response.json())

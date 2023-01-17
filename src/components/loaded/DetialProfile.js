@@ -31,7 +31,7 @@ function DetialProfile() {
   const [document, setDocument] = useState("")
 
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apiprofile/" + ProfileId)
+    fetch("http://192.168.0.236:8000/apiprofile/" + ProfileId)
       .then((res) => {
         return res.json()
       })
@@ -78,7 +78,7 @@ function DetialProfile() {
            
             <img
               alt={UserName}
-              src={`http://192.168.0.12:8000/apilogin/${Img}`}
+              src={`http://192.168.0.236:8000/apilogin/${Img}`}
               sx={{ width: 130, height: 130 }}
               className="shadow-lg w-full h-[10rem] object-cover rounded-md"
             /> 

@@ -24,7 +24,7 @@ function TableData() {
       redirect: "follow",
     }
 
-    fetch("http://192.168.0.12:8000/apilogin/gettoken", requestOptions)
+    fetch("http://192.168.0.236:8000/apilogin/gettoken", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setUser(result.userlogin)
@@ -41,7 +41,7 @@ function TableData() {
 
   const getProfile = async () => {
     try {
-      const response = await axios.get("http://192.168.0.12:8000/apilogin/select")
+      const response = await axios.get("http://192.168.0.236:8000/apilogin/select")
       setProfiledata(response.data)
       setFilterprofile(response.data)
     } catch (error) {

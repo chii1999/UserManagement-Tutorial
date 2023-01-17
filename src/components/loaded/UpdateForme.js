@@ -18,7 +18,7 @@ export default function UpdateForme() {
   const [Mobile, setMobile] = useState("")
 
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apiuser/" + UserId)
+    fetch("http://192.168.0.236:8000/apiuser/" + UserId)
       .then((res) => {
         return res.json()
       })
@@ -37,7 +37,7 @@ export default function UpdateForme() {
     e.preventDefault()
     const empdata = { UserId ,UserName, Email, Mobile }
 
-    fetch("http://192.168.0.12:8000/apiuser/updateforme/", {
+    fetch("http://192.168.0.236:8000/apiuser/updateforme/", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(empdata),

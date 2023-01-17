@@ -25,7 +25,7 @@ export default function LabTabs() {
   const [Rolename, setRolename] = useState("")
 
   useEffect(() => {
-    fetch("http://192.168.0.12:8000/apiroles/all/" + UserId)
+    fetch("http://192.168.0.236:8000/apiroles/all/" + UserId)
       .then((res) => {
         return res.json()
       })
@@ -81,7 +81,7 @@ export default function LabTabs() {
       const getData = { UserId, PermCreate, PermRead, PermUpdate, PermDelete }
 
       axios
-        .post("http://192.168.0.12:8000/apiperm/create", getData)
+        .post("http://192.168.0.236:8000/apiperm/create", getData)
         .then((res) => {
           swal({
             title: "ສຳເລັດແລ້ວ",

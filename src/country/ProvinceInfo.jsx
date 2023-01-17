@@ -19,7 +19,7 @@ export default function ProvinceInfo() {
   }, [])
 
   const UserGet = () => {
-    fetch("http://192.168.0.12:8000/apiprovince")
+    fetch("http://192.168.0.236:8000/apiprovince")
       .then((res) => res.json())
       .then((result) => {
         setItems(result)
